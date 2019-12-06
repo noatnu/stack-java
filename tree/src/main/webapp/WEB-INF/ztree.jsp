@@ -11,10 +11,7 @@
         <div class="card" style="margin-top: 20px;">
 
             <ul style="margin-top:20px;margin-right:30px;">
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/hello">hello</a></li>
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/jsonShow">jsonShow</a></li>
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/custom">自定义</a></li>
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/beforeEditName">添加节点</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/baseEdit">baseEdit</a></li>
             </ul>
 
             <ul style="margin-top:20px;margin-right:30px;">

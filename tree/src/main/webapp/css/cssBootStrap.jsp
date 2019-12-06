@@ -42,7 +42,7 @@
 <link href="${pageContext.request.contextPath}/assembly/plugins/jquery/jQuery-Tags-Input/jquery.tagsinput.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assembly/plugins/jquery/jQuery-Tags-Input/jquery.tagsinput.js"></script>
 <!-- 引入zTree 3 -->
-<link href="${pageContext.request.contextPath}/assembly/plugins/zTree/v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assembly/plugins/zTree/v3/css/metroStyle/metroStyle.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assembly/plugins/zTree/v3/js/jquery.ztree.all.js"></script>
 
 
