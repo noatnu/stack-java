@@ -59,6 +59,15 @@
             <!-- 设置这个属性后 数据实体可以获取插入后的id -->
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+
+        <table tableName="tb_tree_node"
+               domainObjectName="TreeNode"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <!-- 设置这个属性后 数据实体可以获取插入后的id -->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 
     <!-- run mybatis-generator:generate -->

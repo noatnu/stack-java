@@ -55,7 +55,7 @@
             <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/log-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过10M，若超过10M，日志文件会以索引0开始，
                  命名日志文件，例如log-error-2013-12-21.0.log -->
-            <maxFileSize>1KB</maxFileSize>
+            <maxFileSize>30MB</maxFileSize>
             <!-- 日志文件保留天数 -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -86,7 +86,7 @@
             <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/log-warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过10M，若超过10M，日志文件会以索引0开始，
                  命名日志文件，例如log-warn-2013-12-21.0.log -->
-            <maxFileSize>1KB</maxFileSize>
+            <maxFileSize>30MB</maxFileSize>
             <!-- 日志文件保留天数 -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -117,7 +117,7 @@
             <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/log-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过10M，若超过10M，日志文件会以索引0开始，
                  命名日志文件，例如log-info-2013-12-21.0.log -->
-            <maxFileSize>1KB</maxFileSize>
+            <maxFileSize>30MB</maxFileSize>
             <!-- 日志文件保留天数 -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -148,7 +148,7 @@
             <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/log-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过10M，若超过10M，日志文件会以索引0开始，
                  命名日志文件，例如log-debug-2013-12-21.0.log -->
-            <maxFileSize>1KB</maxFileSize>
+            <maxFileSize>30MB</maxFileSize>
             <!-- 日志文件保留天数 -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -175,7 +175,7 @@
             <level>WARN</level>
         </filter>
         <!-- 正在记录的日志文件的路径及文件名 -->
-        <File>${LOG_PATH}/${PROJECT_NAME}/${PROJECT_NAME}.log.other.log</File>
+        <File>${LOG_PATH}/${PROJECT_NAME}/${PROJECT_NAME}.log.other2.log</File>
         <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- 归档的日志文件的路径，例如今天是2013-12-21日志，当前写的日志文件路径为file节点指定，
@@ -184,7 +184,7 @@
             <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/log-other-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 除按日志记录之外，还配置了日志文件不能超过10M，若超过10M，日志文件会以索引0开始，
                  命名日志文件，例如log-debug-2013-12-21.0.log -->
-            <maxFileSize>1KB</maxFileSize>
+            <maxFileSize>30MB</maxFileSize>
             <!-- 日志文件保留天数 -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>

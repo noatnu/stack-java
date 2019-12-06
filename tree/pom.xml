@@ -23,8 +23,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -59,6 +59,14 @@
                 <exclusion>
                     <groupId>org.apache</groupId>
                     <artifactId>org.apache</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>aspose-cells</groupId>
+                    <artifactId>aspose-cells</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>aspose-words</groupId>
+                    <artifactId>aspose-words</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>

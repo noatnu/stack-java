@@ -21,7 +21,7 @@ public class UserBootDao {
     private UserBootMapper userBootMapper;
 
     public void saveUserBoot(UserBoot userBoot){
-        int num = userBootMapper.insertSelective(userBoot);
+       userBootMapper.insertSelective(userBoot);
     }
 
     public UserBoot getUserBoot(Integer id){
