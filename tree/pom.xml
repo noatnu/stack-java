@@ -40,6 +40,26 @@
                     <groupId>org.junit.jupiter</groupId>
                     <artifactId>junit-jupiter-api</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.logback-extensions</groupId>
+                    <artifactId>logback-ext-spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>org.springframework</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache</groupId>
+                    <artifactId>org.apache</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
