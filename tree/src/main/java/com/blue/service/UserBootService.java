@@ -20,23 +20,23 @@ public class UserBootService {
     @Autowired
     private UserBootDao userBootDao;
 
-    public void saveUserBoot(UserBoot userBoot)throws Exception{
+    public void saveUserBoot(UserBoot userBoot){
         userBootDao.saveUserBoot(userBoot);
     }
 
-    public UserBoot getUserBoot(Integer id)throws Exception{
+    public UserBoot getUserBoot(Integer id){
         return userBootDao.getUserBoot(id);
     }
 
-    public boolean deleteUserBoot(Integer id)throws Exception{
+    public boolean deleteUserBoot(Integer id){
         return userBootDao.deleteUserBoot(id);
     }
 
-    public boolean updateUserBoot(UserBoot userBoot)throws Exception{
+    public boolean updateUserBoot(UserBoot userBoot){
         return userBootDao.updateUserBoot(userBoot);
     }
 
-    public List<UserBoot> findListUserBoot()throws Exception{
+    public List<UserBoot> findListUserBoot(){
         return userBootDao.findListUserBoot();
     }
 

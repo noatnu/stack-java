@@ -3,8 +3,8 @@ server:
   context-path: /tree #使用localhost:8081/tree/hello
 spring:
     datasource:
-        name: spring-boot
-        url: jdbc:mysql://localhost:3306/spring-boot?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+        name: tree
+        url: jdbc:mysql://localhost:3306/tree?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
         username: root
         password: 123456
         # 使用druid数据源

@@ -28,13 +28,21 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>z-utils</groupId>
             <artifactId>z-utils</artifactId>
             <version>1.0</version>
             <!--<scope>system</scope>-->
             <!--<systemPath>${project.basedir}/lib/z-utils.jar</systemPath>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <!-- apache jar -->
         <!-- Apache Commons BeanUtils 处理属性 -->
         <dependency>
