@@ -27,7 +27,7 @@ public class TreeNodeService {
     }
 
     public void saveAndUpdate(TreeNode treeNode){
-        if (StringUtils.isNotEmpty(treeNode.getId())){
+        if (StringUtils.isEmpty(treeNode.getId())){
             saveTreeNode(treeNode) ;
         }else {
             updateTreeNode(treeNode) ;

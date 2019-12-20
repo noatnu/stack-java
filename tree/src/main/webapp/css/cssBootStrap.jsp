@@ -35,6 +35,7 @@
 <script src="${pageContext.request.contextPath}/assembly/plugins/jquery/select2/select2_locale_zh-CN.js"></script>
 <!-- jquery validation -->
 <script src="${pageContext.request.contextPath}/assembly/plugins/jquery/jquery-validation-1.17.0/dist/jquery.validate.js"></script>
+<script src="${pageContext.request.contextPath}/assembly/plugins/jquery/jquery-validation-1.17.0/dist/jquery.validate.extend.js"></script>
 <script src="${pageContext.request.contextPath}/assembly/plugins/jquery/jquery-validation-1.17.0/dist/localization/messages_zh.js"></script>
 <!-- jquery maskedinput -->
 <script src="${pageContext.request.contextPath}/assembly/plugins/jquery/jquery-maskedinput/dist/jquery.maskedinput.js"></script>
