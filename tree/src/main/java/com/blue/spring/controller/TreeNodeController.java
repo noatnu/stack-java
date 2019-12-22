@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tool.utils.FormatUtils;
 import tool.web.HttpResult;
 
 @RequestMapping(value = "/treeNode")
@@ -29,7 +30,7 @@ public class TreeNodeController {
     }
 
     @GetMapping(value = "/getTreeNodeById/{id}")
-    public HttpResult getTreeNodeById(@PathVariable(name = "id") String id){
+    public HttpResult getTreeNodeById(@PathVariable(name = "id") Integer id){
         try {
             TreeNode treeNode = treeNodeService.getTreeNodeById(id) ;
             return HttpResult.newCorrectResult(200,treeNode);
@@ -50,9 +51,9 @@ public class TreeNodeController {
     }
 
     @DeleteMapping(value = "/deleteTreeNodeById/{id}")
-    public HttpResult deleteTreeNodeById(@PathVariable(name = "id") String id){
+    public HttpResult deleteTreeNodeById(@PathVariable (name = "id") String id){
         try {
-            treeNodeService.deleteTreeNodeById(id);
+            FormatUtils.transformString2List(id).forEach(s -> treeNodeService.deleteTreeNodeById(Integer.parseInt(s)));
             return HttpResult.newCorrectResult(200,"success") ;
         } catch (Exception e) {
             logger.error(e.getMessage(),e);

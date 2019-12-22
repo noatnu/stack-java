@@ -17,6 +17,7 @@
             </div>
             <form class="form-horizontal">
                 <input type="hidden" name="id">
+                <input type="hidden" name="tId">
                 <input type="hidden" name="pid" value="0">
                 <div class="modal-body">
                     <div class="row">
@@ -67,9 +68,18 @@
 <div class="row">
 
     <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12" style="margin-top:10px;margin-bottom:10px;">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modeTreeNodeDiv" onclick="baseObj.showModel({pid:0});">
-            新增
-        </button>
+        <div class="btn-group ">
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.showModel({pid:0});">
+                新增
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.editData()">
+                编辑
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.deleteData();">
+                删除
+            </button>
+
+        </div>
     </div>
 
     <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12" style="margin-top:10px;margin-bottom:10px;">
@@ -101,40 +111,112 @@
 
     baseObj.config = {
         tree: $("#treeDemo"),
-        model:$("#modeTreeNodeDiv")
+        model: $("#modeTreeNodeDiv")
     };
 
 
-    baseObj.showModel = function (data) {
-        var frm = baseObj.config.model.find("form") ;
+    baseObj.showModel = function () {
+        var data = {pid: 0};
+        var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
+        var nodes = zTree.getSelectedNodes();
+        if (nodes.length > 1) {
+            alert("请只选择一个!");
+            return false;
+        }
+        if (nodes.length == 1) {
+            var treeNode = nodes[0];
+            data.pid = treeNode.id;
+            data.tId = treeNode.tId;
+        }
+        var frm = baseObj.config.model.find("form");
         frm.clearAll();
-        baseObj.initForm(data) ;
+        baseObj.initForm(data);
+        baseObj.config.model.modal("show");
     };
 
     baseObj.initForm = function (data) {
-        var frm = baseObj.config.model.find("form") ;
+        var frm = baseObj.config.model.find("form");
         frm.clearAll();
         frm.initForm(data);
     };
-    baseObj.saveData = function () {
-        var frm = baseObj.config.model.find("form") ;
-        if (!frm.valid()){
+
+    baseObj.editData = function () {
+        var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
+        var nodes = zTree.getSelectedNodes();
+        if (nodes.length > 1) {
+            alert("请只选择一个!");
             return false;
         }
-        var data = formSerializeArray(frm) ;
+        if (nodes.length == 1) {
+            var treeNode = nodes[0];
+            baseObj.initForm(treeNode) ;
+            baseObj.config.model.modal("show");
+        }else {
+            alert("至少选择一个!");
+            return false;
+        }
+    };
+
+    baseObj.deleteData = function () {
+        var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
+        var nodes = zTree.getSelectedNodes();
+        if (nodes.length == 0) {
+            alert("至少选择一个!");
+            return false;
+        }
+        var data = [] ;
+        for (var i = 0; i < nodes.length;i++){
+            data.push(nodes[i].id) ;
+        }
+        $.ajax({
+            url: "${pageContext.request.contextPath}/treeNode/deleteTreeNodeById/"+data.join(","),
+            type: "post",
+            dataType: "json",
+            data: {"method_":"DELETE"},
+            success: function (result) {
+                if (result.ret) {
+                    baseObj.loadTree();
+                }
+            },
+            error: function (result) {
+                console.log(result) ;
+            }
+        });
+    };
+
+    baseObj.saveData = function () {
+        var frm = baseObj.config.model.find("form");
+        if (!frm.valid()) {
+            return false;
+        }
+        var data = formSerializeArray(frm);
         $.ajax({
             url: "${pageContext.request.contextPath}/treeNode/saveAndUpdate",
             type: "post",
             dataType: "json",
-            data: {fomData:JSON.stringify(data)},
+            data: {fomData: JSON.stringify(data)},
             success: function (result) {
                 if (result.ret) {
-                    baseObj.config.model.modal("hide") ;
-                    baseObj.loadTree() ;
+                    baseObj.config.model.modal("hide");
+                    var item = result.data;
+                    var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
+                    var parentNode = null;
+                    if (data.tId) {
+                        parentNode = zTree.getNodeByTId(data.tId);
+                    }
+                    if (data.id) {
+                        //修改 ==>第一种方式是修改完数据然后直接刷新树,第二种是修改完成后拿到node然后在拿到父级接着删除这个节点然后利用最新节点添加节点,最后最好一种是直接更新节点
+                        parentNode.name = item.name;
+                        zTree.updateNode(parentNode);
+                    } else {
+                        //新增
+                        zTree.addNodes(parentNode, item);//当parentNode id为null一般是添加到第一级(参考zTree api 那上面是这样说的)
+                    }
+                    baseObj.loadTree();
                 }
             },
             error: function (result) {
-
+                console.log(result) ;
             }
         });
     };
@@ -173,7 +255,7 @@
             url: "${pageContext.request.contextPath}/treeNode/getTreeNodeList",
             type: "get",
             dataType: "json",
-            data: {pid: 0},
+            data: {ipType: "ipv4"},
             success: function (result) {
                 if (result.ret) {
                     $.fn.zTree.destroy();

@@ -10,7 +10,7 @@ CREATE TABLE `boot_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `tb_tree_node` (
-  `id` varchar(50) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` varchar(50) DEFAULT NULL COMMENT '父id',
   `parent_name` varchar(255) DEFAULT NULL COMMENT '父名称',
   `name` varchar(255) DEFAULT NULL COMMENT '名称',
@@ -21,8 +21,6 @@ CREATE TABLE `tb_tree_node` (
   `url` varchar(255) DEFAULT NULL COMMENT '网址',
   `ip_adress` varchar(255) DEFAULT NULL COMMENT 'ip地址',
   `ip_type` varchar(255) DEFAULT NULL COMMENT 'ip地址类型',
-  `create` varchar(255) DEFAULT NULL COMMENT '创建人',
-  `time` datetime DEFAULT NULL COMMENT '时间',
   `last_update_time` datetime DEFAULT NULL COMMENT '最好更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tree table ';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='tree table ';

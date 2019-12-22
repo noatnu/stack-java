@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,14 +21,12 @@ public class TreeNodeService {
     private TreeNodeDao treeNodeDao;
 
     public void saveTreeNode(TreeNode treeNode) {
-        if (StringUtils.isEmpty(treeNode.getId())) {
-            treeNode.setId(RandomStringUtils.randomNumeric(25));
-        }
+        treeNode.setIpType("ipv4");
         treeNodeDao.saveTreeNode(treeNode);
     }
 
     public void saveAndUpdate(TreeNode treeNode){
-        if (StringUtils.isEmpty(treeNode.getId())){
+        if (treeNode.getId() == null || treeNode.getId()==0){
             saveTreeNode(treeNode) ;
         }else {
             updateTreeNode(treeNode) ;
@@ -35,15 +34,16 @@ public class TreeNodeService {
     }
 
     public void updateTreeNode(TreeNode treeNode) {
+        treeNode.setLastUpdateTime(new Date());
         treeNodeDao.updateTreeNode(treeNode);
     }
 
-    public void deleteTreeNodeById(String id) {
-        treeNodeDao.deleteTreeNodeById(id);
+    public void deleteTreeNodeById(Integer masterId) {
+        treeNodeDao.deleteTreeNodeById(masterId);
     }
 
-    public TreeNode getTreeNodeById(String id) {
-        return treeNodeDao.getTreeNodeById(id);
+    public TreeNode getTreeNodeById(Integer masterId) {
+        return treeNodeDao.getTreeNodeById(masterId);
     }
 
     public List<TreeNode> getTreeNodeList(TreeNode treeNode) {

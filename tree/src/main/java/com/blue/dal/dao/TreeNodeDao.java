@@ -26,19 +26,19 @@ public class TreeNodeDao {
         treeNodeMapper.updateByPrimaryKeySelective(treeNode) ;
     }
 
-    public void deleteTreeNodeById(String id){
-        treeNodeMapper.deleteByPrimaryKey(id) ;
+    public void deleteTreeNodeById(Integer masterId){
+        treeNodeMapper.deleteByPrimaryKey(masterId) ;
     }
 
-    public TreeNode getTreeNodeById(String id){
-        return treeNodeMapper.selectByPrimaryKey(id) ;
+    public TreeNode getTreeNodeById(Integer masterId){
+        return treeNodeMapper.selectByPrimaryKey(masterId) ;
     }
 
     public List<TreeNode> getTreeNodeList(TreeNode treeNode){
         TreeNodeExample example = new TreeNodeExample();
         TreeNodeExample.Criteria criteria = example.createCriteria();
 
-        if (StringUtils.isNotEmpty(treeNode.getId())){
+        if (treeNode.getId() != null && treeNode.getId()!=0){
             criteria.andIdEqualTo(treeNode.getId()) ;
         }
 
