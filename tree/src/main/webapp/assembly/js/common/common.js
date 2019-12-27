@@ -69,7 +69,110 @@
         }
     });
 
-})(jQuery)
+    var zchCommon = {
+        //判断是否为图片(图像)
+        checkImgFile: function (filename) {
+            var flag = false; //状态
+            //常用图片后缀
+            var arr = ["bmp", "dib", "rle", "emf", "gif", "jpg", "jpeg", "jpe", "jif", "pcx", "dcx", "pic", "png", "tga", "tif", "tiffxif", "wmf", "jfif"];
+            if (filename) {
+                //取出上传文件的扩展名
+                var index = filename.lastIndexOf(".");
+                var ext = filename.substr(index + 1);
+                //转换为小写比较
+                ext = ext.toLocaleLowerCase();
+                //循环比较
+                for (var i = 0; i < arr.length; i++) {
+                    if (ext == arr[i]) {
+                        flag = true; //一旦找到合适的，立即退出循环
+                        break;
+                    }
+                }
+            }
+            return flag;
+        },
+        /**
+         * 根据省份名称返回省份简称
+         * @param province
+         * @returns {String}
+         */
+        provinceForShort: function (province) {
+            if (province == "北京")
+                return "京";
+            else if (province == "天津")
+                return "津";
+            else if (province == "重庆")
+                return "渝";
+            else if (province == "上海")
+                return "沪";
+            else if (province == "河北")
+                return "冀";
+            else if (province == "山西")
+                return "晋";
+            else if (province == "辽宁")
+                return "辽";
+            else if (province == "吉林")
+                return "吉";
+            else if (province == "黑龙江")
+                return "黑";
+            else if (province == "江苏")
+                return "苏";
+            else if (province == "浙江")
+                return "浙";
+            else if (province == "安徽")
+                return "皖";
+            else if (province == "福建")
+                return "闽";
+            else if (province == "江西")
+                return "赣";
+            else if (province == "山东")
+                return "鲁";
+            else if (province == "河南")
+                return "豫";
+            else if (province == "湖北")
+                return "鄂";
+            else if (province == "湖南")
+                return "湘";
+            else if (province == "广东")
+                return "粤";
+            else if (province == "海南")
+                return "琼";
+            else if (province == "四川")
+                return "川";
+            else if (province == "贵州")
+                return "黔";
+            else if (province == "云南")
+                return "云";
+            else if (province == "陕西")
+                return "陕";
+            else if (province == "甘肃")
+                return "甘";
+            else if (province == "青海")
+                return "青";
+            else if (province == "台湾")
+                return "台";
+            else if (province == "内蒙古")
+                return "内";
+            else if (province == "广西")
+                return "桂";
+            else if (province == "宁夏")
+                return "宁";
+            else if (province == "新疆")
+                return "新";
+            else if (province == "西藏")
+                return "藏";
+            else if (province == "香港")
+                return "港";
+            else if (province == "澳门")
+                return "澳";
+            else
+                return "";
+        }
+    } ;
+
+
+    window.zchCommon = zchCommon;
+})(jQuery);
 
 
 //表单查询参数
@@ -88,7 +191,7 @@ function formSerializeArray(obj) {
                 ret[field.name] = field.value;
             }
         }
-    })
+    });
     return ret;
 }
 
@@ -180,7 +283,22 @@ function formatToUnderline(var1, var2, separator) {
     }
     var resultStr = '';
     $.each(keyArray, function (i, item) {
-        resultStr += item + '_' + valueArray[i]+',';
-    })
-    return resultStr.replace(/,$/,'');
+        resultStr += item + '_' + valueArray[i] + ',';
+    });
+    return resultStr.replace(/,$/, '');
 }
+
+$(document).ready(function () {
+
+
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd', language: 'zh-CN'});
+
+    try {
+        $(".select2").each(function () {
+            $(this).select2({minimumResultsForSearch: -1});
+        })
+    } catch (e) {
+    }
+
+
+});

@@ -37,6 +37,17 @@
                                 <div class="form-group">
                                     <div class="x-valid">
                                         <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            日期<span class="symbol required"></span>
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control form_datetime" name="exampleDate"
+                                                   placeholder="日期" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
                                             html文本<span class="symbol required"></span>
                                         </label>
                                         <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
@@ -172,7 +183,7 @@
             url: "${pageContext.request.contextPath}/treeNode/deleteTreeNodeById/"+data.join(","),
             type: "post",
             dataType: "json",
-            data: {"method_":"DELETE"},
+            data: {"_method":"DELETE"},
             success: function (result) {
                 if (result.ret) {
                     baseObj.loadTree();
@@ -271,7 +282,12 @@
 
 
     $(document).ready(function () {
+
         baseObj.loadTree();
+
+
+
+
     });
 
 
