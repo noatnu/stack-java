@@ -208,6 +208,67 @@ function formAddParam(formId, params) {
     }
 }
 
+function TableInit(table, url, cols, data, btParams, isCheck, isOrder) {
+    var tableObj;
+    if (table instanceof jQuery) /**我只想传一个table对象，不想传id(id太麻烦，一改到处需要改)**/{
+        tableObj = table;
+    } else {
+        tableObj = $("#" + table);
+    }
+    data = (data === undefined) ? {} : data;
+    if (cols) {
+        if (isOrder != false) {
+            cols.unshift({
+                field: 'Number',
+                title: '序号',
+                width: '50px',
+                formatter: function (value, row, index) {
+                    var page = tableObj.bootstrapTable("getPage");
+                    return page.pageSize * (page.pageNumber - 1) + index + 1;
+                    // return index + 1;
+                }
+            });
+        }
+
+        if (isCheck) {
+            cols.unshift({
+                field: 'ckeckbox',
+                checkbox: true
+            });
+        }
+    }
+    var defaluts = {
+        url: url,         //请求后台的URL（*）
+        method: 'get',                      //请求方式（*）
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1,                       //初始化加载第一页，默认第一页
+        showColumns: false,                  //是否显示所有的列
+        showRefresh: true,                  //是否显示刷新按钮
+        search: true,
+        uniqueId: "id",
+        contentType: "application/json;charset=UTF-8",
+        toolbar: '#toolbar', //工具按钮用哪个容器
+        searchOnEnterKey: true, //回车再出发搜索
+        icons: {
+            refresh: 'glyphicon-refresh clip-search-3'
+        },
+        queryParams: function (params) {
+            data["limit"] = params.limit;
+            data["offset"] = (params.offset + params.limit) / params.limit;
+            // data["search"] = params.search;
+            return data;
+        },//传递参数（*）
+        columns: [cols]
+    };
+
+    defaluts = $.extend({}, defaluts, btParams);
+    tableObj.bootstrapTable(defaluts);
+
+
+}
 
 /**
  * 去除字符

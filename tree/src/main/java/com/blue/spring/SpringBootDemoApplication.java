@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
  **/
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.blue"})
-@MapperScan(basePackages = "com.blue.dal.mapper")
+@MapperScan(basePackages = {"com.blue.dal.mapper.custom","com.blue.dal.mapper"})
 public class SpringBootDemoApplication extends SpringBootServletInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringBootDemoApplication.class);

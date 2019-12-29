@@ -15,13 +15,13 @@
 <body class="container">
 <div class="row">
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="easyui-panel">
             <a href="#" class="easyui-linkbutton" onclick="javascript:$('#dg').datagrid()">Transform</a>
         </div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="easyui-panel">
 
             <table id="dg" style="width:700px;height:auto;border:1px solid #ccc;">
@@ -54,7 +54,7 @@
 
         </div>
     </div>
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="panel-footer">
             <ul style="margin-top:20px;margin-right:20px;">
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/sys/easy">返回</a></li>

@@ -10,9 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class ZTreeController {
 
-    @RequestMapping(value = "/baseEdit", method = {RequestMethod.GET}, name = "baseEdit")
-    public ModelAndView hello() {
-       String view = String.join("" ,ViewEnum.ZTREE.getKey(),"baseEdit") ;
+    @RequestMapping(value = "/baseHandle", method = {RequestMethod.GET}, name = "baseHandle")
+    public ModelAndView baseHandle() {
+       String view = String.join("" ,ViewEnum.ZTREE.getKey(),"baseHandle") ;
         ModelAndView mv = new ModelAndView(view) ;
         return mv;
     }

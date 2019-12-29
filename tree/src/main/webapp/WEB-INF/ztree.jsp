@@ -11,7 +11,7 @@
         <div class="card" style="margin-top: 20px;">
 
             <ul style="margin-top:20px;margin-right:30px;">
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/baseEdit">baseEdit</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ztree/baseHandle">ztree 基本操作</a></li>
             </ul>
 
             <ul style="margin-top:20px;margin-right:30px;">

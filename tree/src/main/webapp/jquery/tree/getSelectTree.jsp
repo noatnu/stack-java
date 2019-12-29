@@ -12,11 +12,11 @@
 </head>
 <body class="container">
 <div class="row">
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div id="tree"></div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="panel-footer">
             <ul style="margin-top:20px;margin-right:20px;">
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/sys/jquery">返回</a></li>

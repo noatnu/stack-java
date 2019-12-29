@@ -1,18 +1,17 @@
 package com.blue.spring.controller.other;
 
+import com.alibaba.fastjson.JSONObject;
+import com.blue.common.page.PageRequest;
 import com.blue.dal.entity.UserBoot;
 import com.blue.service.UserBootService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import tool.web.BootstrapTableVo;
 import tool.web.HttpResult;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @createDate 2018/12/12
@@ -31,8 +30,8 @@ public class RestfulController {
         return new ModelAndView(String.format("%s%s","restful/","index"));
     }
 
-    @GetMapping(value = "/get", name = "get")
-    public HttpResult get(@RequestParam(value = "id", required = true) int id) {
+    @GetMapping(value = "/get/{id}", name = "get")
+    public HttpResult get(@PathVariable(name = "id") Integer id) {
         try {
             UserBoot userBoot = userBootService.getUserBoot(id);
             return HttpResult.newCorrectResult(200, userBoot);
@@ -42,19 +41,20 @@ public class RestfulController {
         }
     }
 
-    @PostMapping(value = "/save", name = "save")
-    public HttpResult save(UserBoot userBoot) {
+    @PostMapping(value = "/save/{id}", name = "save")
+    public HttpResult save(@PathVariable(name = "id") String formData) {
         try {
+            UserBoot userBoot= JSONObject.parseObject(formData,UserBoot.class) ;
             userBootService.saveUserBoot(userBoot);
-            return HttpResult.newCorrectResult(200);
+            return HttpResult.newCorrectResult(200,userBoot);
         } catch (Exception e) {
             logger.error("error", e);
             return HttpResult.newErrorResult(500, e);
         }
     }
 
-    @DeleteMapping(value = "/delete", name = "delete")
-    public HttpResult delete(@RequestParam(value = "id", required = true) int id) {
+    @DeleteMapping(value = "/delete/{id}", name = "delete")
+    public HttpResult delete(@PathVariable(name = "id") Integer id) {
         try {
             userBootService.deleteUserBoot(id);
             return HttpResult.newCorrectResult(200);
@@ -64,29 +64,22 @@ public class RestfulController {
         }
     }
 
-    @PutMapping(value = "/put", name = "put")
-    public HttpResult update(@RequestParam(value = "userBoot") UserBoot userBoot) {
+    @PutMapping(value = "/put/{id}", name = "put")
+    public HttpResult update(@PathVariable(name = "id") String formData) {
         try {
+            UserBoot userBoot= JSONObject.parseObject(formData,UserBoot.class) ;
             userBootService.updateUserBoot(userBoot);
-            return HttpResult.newCorrectResult(200);
+            return HttpResult.newCorrectResult(200,userBoot);
         } catch (Exception e) {
             logger.error("error", e);
             return HttpResult.newErrorResult(500, e);
         }
     }
 
-    @RequestMapping(value = "/list", name = "list", method = {RequestMethod.GET})
-    public BootstrapTableVo list() {
-        try {
-            List<UserBoot> userBootList = userBootService.findListUserBoot();
-            BootstrapTableVo vo = new BootstrapTableVo();
-            vo.setRows(ObjectUtils.isEmpty(userBootList)?new ArrayList<UserBoot>():userBootList);
-            vo.setTotal(Integer.toUnsignedLong(userBootList.size()));
-            return vo;
-        } catch (Exception e) {
-            logger.error("error", e);
-            return null ;
-        }
+    @GetMapping(value="/getBootstrapTableVo")
+    public BootstrapTableVo getBootstrapTableVo(PageRequest pageQuery) {
+        return userBootService.getBootstrapTableVo(pageQuery);
     }
+
 
 }

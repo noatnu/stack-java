@@ -5,12 +5,12 @@
 <div class="container">
     <div class="row">
         <div class="form-group">
-            <div class="col-sm-12" style="margin-top:10px;">
+            <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12" style="margin-top:10px;">
 
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-12" style="margin-bottom:40px;">
+            <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12" style="margin-bottom:40px;">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="${pageContext.request.contextPath}/sys/home">首页</a></li>
                     <li class="active"><a href="${pageContext.request.contextPath}/sys/easy">easy 树</a></li>

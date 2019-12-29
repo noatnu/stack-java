@@ -24,17 +24,17 @@
 </head>
 <body class="container">
 <div class="row">
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div id="tree"></div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <input id="btnAdd" class="btn btn-primary" type="button" value="添加节点">
         <input id="btnMove" class="btn btn-success" type="button" value="节点移动">
         <input id="btnDel" class="btn btn-danger" type="button" value="删除节点">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-xs-4  col-sm-4  col-md-4  col-lg-4">
         <div class="panel panel-primary ">
             <div class="panel-heading">
                 <h3 class="panel-title">科目树</h3>
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-xs-8  col-sm-8  col-md-8  col-lg-8">
         <div class="panel panel-primary ">
             <div class="panel-heading">
                 <h3 class="panel-title">编辑区</h3>
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="panel-footer">
             <ul style="margin-top:20px;margin-right:20px;">
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/sys/jquery">返回</a></li>

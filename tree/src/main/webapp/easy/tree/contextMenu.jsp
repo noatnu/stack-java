@@ -14,7 +14,7 @@
 </head>
 <body class="container">
 <div class="row">
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="easyui-panel">
             <ul id="treeId" class="easyui-tree">
 
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div id="mm" class="easyui-menu" style="width:120px;">
             <div onclick="append()" data-options="iconCls:'icon-add'">Append</div>
             <div onclick="removeit()" data-options="iconCls:'icon-remove'">Remove</div>
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="col-xl-12 col-sm-12" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="panel-footer">
             <ul style="margin-top:20px;margin-right:20px;">
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/sys/easy">返回</a></li>
