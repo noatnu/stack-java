@@ -80,13 +80,13 @@
 
     <div class="col-xl-12 col-sm-12 col-lg-12 col-md-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="btn-group ">
-            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.showModel({pid:0});">
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.showModel(true);">
                 新增
             </button>
-            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.editData()">
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.editData(true)">
                 编辑
             </button>
-            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.deleteData();">
+            <button type="button" class="btn btn-primary btn-lg" onclick="baseObj.deleteData(true);">
                 删除
             </button>
 
@@ -111,8 +111,53 @@
 
     var baseObj = {};
 
-    function removeHoverDom() {
 
+    /**
+     * 配合 addHoverDom()
+     * @param treeId
+     * @param treeNode
+     */
+    function removeHoverDom(treeId, treeNode) {
+        $("#addBtn_" + treeNode.tId).unbind().remove();
+        $("#editBtn_" + treeNode.tId).unbind().remove();
+        $("#deleteBtn_" + treeNode.tId).unbind().remove();
+    }
+
+
+    /**
+     * 非常重要的添加操作dom
+     * @param treeId
+     * @param treeNode
+     */
+    function addHoverDom(treeId, treeNode) {
+        var element = $("#" + treeNode.tId + "_span"); //获取节点信息
+        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+        var html = "";
+
+        html += "<span class=' button add' id='addBtn_" + treeNode.tId + "' title='添加数据'>" + "</span>";//定义添加按钮
+        html += "<span class=' button edit' id='editBtn_" + treeNode.tId + "' title='编辑数据'>" + "</span>";//定义编辑按钮
+        html += "<span class=' button remove' id='deleteBtn_" + treeNode.tId + "' title='删除数据'>" + "</span>";//定义删除按钮
+
+
+        element.after(html); //加载添加按钮
+
+        var addBtn = $("#addBtn_" + treeNode.tId);
+        var editBtn = $("#editBtn_" + treeNode.tId);
+        var deleteBtn = $("#deleteBtn_" + treeNode.tId);
+
+        //绑定添加事件，并定义添加操作
+        if (addBtn) addBtn.bind("click", function (e) {
+            baseObj.showModel(false, treeNode.tId);
+        });
+        //编辑
+        if (editBtn) editBtn.bind("click", function (e) {
+            baseObj.initForm(treeNode);
+            baseObj.config.model.modal("show");
+        });
+        //删除
+        if (deleteBtn) deleteBtn.bind("click", function (e) {
+            baseObj.deleteData(false, treeNode.tId);
+        });
     }
 
 
@@ -126,7 +171,7 @@
     };
 
 
-    baseObj.showModel = function () {
+    baseObj.showModel = function (flag, tId) {
         var data = {pid: 0};
         var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
         var nodes = zTree.getSelectedNodes();
@@ -148,10 +193,13 @@
     baseObj.initForm = function (data) {
         var frm = baseObj.config.model.find("form");
         frm.clearAll();
+        if (data.exampleDate) {
+            frm.find("input[name='exampleDate']").val(formatDate(data.exampleDate, true));
+        }
         frm.initForm(data);
     };
 
-    baseObj.editData = function () {
+    baseObj.editData = function (flag, tId) {
         var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
         var nodes = zTree.getSelectedNodes();
         if (nodes.length > 1) {
@@ -160,37 +208,47 @@
         }
         if (nodes.length == 1) {
             var treeNode = nodes[0];
-            baseObj.initForm(treeNode) ;
+            baseObj.initForm(treeNode);
             baseObj.config.model.modal("show");
-        }else {
+        } else {
             alert("至少选择一个!");
             return false;
         }
     };
 
-    baseObj.deleteData = function () {
+    baseObj.deleteData = function (flag, tId) {
         var zTree = $.fn.zTree.getZTreeObj(baseObj.config.tree.prop("id"));
+        var data = [];
+        var node = undefined;
         var nodes = zTree.getSelectedNodes();
-        if (nodes.length == 0) {
-            alert("至少选择一个!");
-            return false;
-        }
-        var data = [] ;
-        for (var i = 0; i < nodes.length;i++){
-            data.push(nodes[i].id) ;
+        if (flag) {
+            if (nodes.length == 0) {
+                alert("至少选择一个!");
+                return false;
+            }
+            for (var i = 0; i < nodes.length; i++) {
+                data.push(nodes[i].id);
+            }
+        } else {
+            node = zTree.getNodeByTId(tId);
+            data.push(node.id)
         }
         $.ajax({
-            url: "${pageContext.request.contextPath}/treeNode/deleteTreeNodeById/"+data.join(","),
+            url: "${pageContext.request.contextPath}/treeNode/deleteTreeNodeById/" + data.join(","),
             type: "post",
             dataType: "json",
-            data: {"_method":"DELETE"},
+            data: {"_method": "DELETE"},
             success: function (result) {
                 if (result.ret) {
-                    baseObj.loadTree();
+                    if (flag) {
+                        baseObj.loadTree();
+                    } else {
+                        zTree.removeNode(node);
+                    }
                 }
             },
             error: function (result) {
-                console.log(result) ;
+                console.log(result);
             }
         });
     };
@@ -227,7 +285,7 @@
                 }
             },
             error: function (result) {
-                console.log(result) ;
+                console.log(result);
             }
         });
     };
@@ -240,6 +298,7 @@
             //页面上的显示效果
             view: {
                 selectedMulti: true,
+                addHoverDom: addHoverDom, //当鼠标移动到节点上时，显示用户自定义控件
                 removeHoverDom: removeHoverDom,//离开节点时的操作
                 expandSpeed: "slow",
                 fontCss: {color: "red"}
@@ -284,8 +343,6 @@
     $(document).ready(function () {
 
         baseObj.loadTree();
-
-
 
 
     });

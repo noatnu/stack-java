@@ -208,66 +208,78 @@ function formAddParam(formId, params) {
     }
 }
 
-function TableInit(table, url, cols, data, btParams, isCheck, isOrder) {
-    var tableObj;
-    if (table instanceof jQuery) /**我只想传一个table对象，不想传id(id太麻烦，一改到处需要改)**/{
-        tableObj = table;
-    } else {
-        tableObj = $("#" + table);
+//日期格式化
+function formatDate(v, isfull) {
+    if (!v) {
+        return "";
     }
-    data = (data === undefined) ? {} : data;
-    if (cols) {
-        if (isOrder != false) {
-            cols.unshift({
-                field: 'Number',
-                title: '序号',
-                width: '50px',
-                formatter: function (value, row, index) {
-                    var page = tableObj.bootstrapTable("getPage");
-                    return page.pageSize * (page.pageNumber - 1) + index + 1;
-                    // return index + 1;
-                }
-            });
-        }
-
-        if (isCheck) {
-            cols.unshift({
-                field: 'ckeckbox',
-                checkbox: true
-            });
-        }
+    if (/^(-)?\d{1,10}$/.test(v)) {
+        v = v * 1000;
+    } else if (/^(-)?\d{1,13}$/.test(v)) {
+        v = v * 1;
     }
-    var defaluts = {
-        url: url,         //请求后台的URL（*）
-        method: 'get',                      //请求方式（*）
-        striped: true,                      //是否显示行间隔色
-        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-        pagination: true,                   //是否显示分页（*）
-        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-        pageNumber: 1,                       //初始化加载第一页，默认第一页
-        showColumns: false,                  //是否显示所有的列
-        showRefresh: true,                  //是否显示刷新按钮
-        search: true,
-        uniqueId: "id",
-        contentType: "application/json;charset=UTF-8",
-        toolbar: '#toolbar', //工具按钮用哪个容器
-        searchOnEnterKey: true, //回车再出发搜索
-        icons: {
-            refresh: 'glyphicon-refresh clip-search-3'
-        },
-        queryParams: function (params) {
-            data["limit"] = params.limit;
-            data["offset"] = (params.offset + params.limit) / params.limit;
-            // data["search"] = params.search;
-            return data;
-        },//传递参数（*）
-        columns: [cols]
-    };
+    var dateObj = new Date(v);
+    var month = dateObj.getMonth() + 1;
+    var day = dateObj.getDate();
+    var hours = dateObj.getHours();
+    var minutes = dateObj.getMinutes();
+    var seconds = dateObj.getSeconds();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    var UnixTimeToDate = dateObj.getFullYear() + '-' + month + '-' + day;
+    if (isfull) {
+        UnixTimeToDate += ' ' + hours + ':' + minutes;
+        UnixTimeToDate += ':' + seconds;
+    }
+    return UnixTimeToDate;
+}
 
-    defaluts = $.extend({}, defaluts, btParams);
-    tableObj.bootstrapTable(defaluts);
+//时间格式化
+function formatTime(v) {
+    if (!v) {
+        return "";
+    }
+    if (/^(-)?\d{1,10}$/.test(v)) {
+        v = v * 1000;
+    } else if (/^(-)?\d{1,13}$/.test(v)) {
+        v = v * 1;
+    }
+    var dateObj = new Date(v);
+    var hours = dateObj.getHours();
+    var minutes = dateObj.getMinutes();
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    return hours + ':' + minutes + " ";
+}
 
-
+//获取参数
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+//获取url后缀
+function getSearch() {
+    var index = window.location.href.indexOf("?");
+    return window.location.href.substring(index + 1);
 }
 
 /**

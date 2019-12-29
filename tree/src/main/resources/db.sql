@@ -18,9 +18,10 @@ CREATE TABLE `tb_tree_node` (
   `json` varchar(2000) DEFAULT NULL COMMENT 'json串',
   `content` varchar(1000) DEFAULT NULL COMMENT '内容',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `example_date` datetime DEFAULT NULL COMMENT '例子时间',
   `url` varchar(255) DEFAULT NULL COMMENT '网址',
   `ip_adress` varchar(255) DEFAULT NULL COMMENT 'ip地址',
   `ip_type` varchar(255) DEFAULT NULL COMMENT 'ip地址类型',
   `last_update_time` datetime DEFAULT NULL COMMENT '最好更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='tree table ';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='tree table ';
