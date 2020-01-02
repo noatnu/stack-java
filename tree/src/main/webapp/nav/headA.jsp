@@ -17,6 +17,7 @@
                     <li class="active"><a href="${pageContext.request.contextPath}/sys/jquery">jquery 树</a></li>
                     <li class="active"><a href="${pageContext.request.contextPath}/sys/ztree">ztree 树</a></li>
                     <li class="active"><a href="${pageContext.request.contextPath}/api/user/index">restful</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/sys/jstl">java web</a></li>
                 </ul>
             </div>
         </div>

@@ -44,4 +44,10 @@ public class SysController {
         logger.info("ztree" + DateUtils.format(new Date(), "yyyy-MM-dd HH:mm"));
         return mv;
     }
+
+    @GetMapping(value = "/jstl", name = "主页")
+    public ModelAndView jstl() {
+        ModelAndView mv = new ModelAndView(String.format("%s%s", ViewEnum.WEB.getKey(), "jstl"));
+        return mv;
+    }
 }
