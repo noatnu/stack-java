@@ -27,6 +27,7 @@
         <module>jquery-install</module>
         <module>map-study</module>
         <module>js-study</module>
+        <module>activity-study</module>
     </modules>
 
     <name>Java study</name>
