@@ -8,9 +8,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import tool.web.BootstrapTableVo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,11 +25,20 @@ public class UserBootService {
 
     @Autowired
     private CustomMapper customMapper;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public Integer getAllSize(){
+        return jdbcTemplate.queryForObject("select count(1) from boot_user",Integer.TYPE) ;
+    }
+
     @Lazy
     @Autowired
     private UserBootDao userBootDao;
 
     public void saveUserBoot(UserBoot userBoot) {
+        userBoot.setCreateDate(new Date());
         userBootDao.saveUserBoot(userBoot);
     }
 
@@ -47,7 +58,6 @@ public class UserBootService {
         return userBootDao.findListUserBoot();
     }
 
-
     public BootstrapTableVo getBootstrapTableVo(PageRequest pageRequest) {
         BootstrapTableVo vo = new BootstrapTableVo();
         PageHelper.startPage(pageRequest.getOffset(), pageRequest.getLimit());
@@ -58,17 +68,13 @@ public class UserBootService {
         return vo;
     }
 
-
-    /**
-     * 调用分页插件完成分页
-     *
-     * @param pageRequest
-     * @return
-     */
-    private PageInfo<UserBoot> getPageInfo(PageRequest pageRequest) {
-        PageHelper.startPage(pageRequest.getPageNumber(), pageRequest.getPageSize());
-        List<UserBoot> sysMenus = customMapper.selectPage();
-        return new PageInfo<UserBoot>(sysMenus);
+    public BootstrapTableVo getBootstrapTableVoTo(PageRequest pageRequest) {
+        BootstrapTableVo vo = new BootstrapTableVo();
+        List<UserBoot> userBootList = customMapper.selectPageByQuery(pageRequest);
+        Long total = Long.valueOf(getAllSize().toString()) ;
+        vo.setTotal(total);
+        vo.setRows(userBootList);
+        return vo;
     }
 
 }

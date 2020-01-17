@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import tool.utils.FormatUtils;
 import tool.web.BootstrapTableVo;
 import tool.web.HttpResult;
 
@@ -41,8 +42,8 @@ public class RestfulController {
         }
     }
 
-    @PostMapping(value = "/save/{id}", name = "save")
-    public HttpResult save(@PathVariable(name = "id") String formData) {
+    @PostMapping(value = "/save", name = "save")
+    public HttpResult save(String formData) {
         try {
             UserBoot userBoot= JSONObject.parseObject(formData,UserBoot.class) ;
             userBootService.saveUserBoot(userBoot);
@@ -54,9 +55,9 @@ public class RestfulController {
     }
 
     @DeleteMapping(value = "/delete/{id}", name = "delete")
-    public HttpResult delete(@PathVariable(name = "id") Integer id) {
+    public HttpResult delete(@PathVariable(name = "id") String id) {
         try {
-            userBootService.deleteUserBoot(id);
+            FormatUtils.transformString2List(id).forEach(s -> userBootService.deleteUserBoot(Integer.parseInt(s)));
             return HttpResult.newCorrectResult(200);
         } catch (Exception e) {
             logger.error("error", e);
@@ -78,7 +79,7 @@ public class RestfulController {
 
     @GetMapping(value="/getBootstrapTableVo")
     public BootstrapTableVo getBootstrapTableVo(PageRequest pageQuery) {
-        return userBootService.getBootstrapTableVo(pageQuery);
+        return userBootService.getBootstrapTableVoTo(pageQuery);
     }
 
 

@@ -7,9 +7,11 @@
 <div class="row">
 
     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
-
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-primary btn-lg" onclick="obj.showModel({});">
             添加
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="obj.removeAll({});">
+            多个数据删除
         </button>
     </div>
 
@@ -20,6 +22,7 @@
             </table>
         </form>
     </div>
+
     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12" style="margin-top:10px;margin-bottom:10px;">
         <div class="panel-body panel">
             <ul style="margin-top:20px;margin-right:20px;">
@@ -27,26 +30,39 @@
             </ul>
         </div>
     </div>
+
 </div>
 <script>
     var obj = {};
-    obj.queryParams = function (params) {
-        var data = {};
-        data["limit"] = params.limit;
-        data["offset"] = (params.offset + params.limit) / params.limit;
-        return data;
+
+    obj.config = {
+        model: $("#modeUserDiv")
     };
 
     //请求参数设置
     function queryParams(params) {
         return {
             offset: params.offset,      //从数据库第几条记录开始
-            limit: params.limit,        //找多少条
+            limit: params.limit        //找多少条
         }
     }
 
-    obj.init = function () {
+    obj.initForm = function (data) {
+        var model = obj.config.model.selector ;
+        model = $(model) ;
+        var frm = model.find("form");
+        frm.clearAll();
+        frm.initForm(data);
+    };
 
+    obj.showModel = function (data) {
+        var model = obj.config.model.selector ;
+        model = $(model) ;
+        obj.initForm(data) ;
+        model.modal("show");
+    };
+
+    obj.init = function () {
         var cols = [{
             checkbox: true
         },
@@ -98,7 +114,7 @@
             showColumns: true,                  //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             minimumCountColumns: 2,             //最少允许的列数
-            clickToSelect: true,                //是否启用点击选中行
+            clickToSelect: false,                //是否启用点击选中行
             height: 600,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "id",                     //每一行的唯一标识，一般为主键列
             showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
@@ -108,12 +124,97 @@
         });
     };
 
+    obj.removeAll = function () {
+        var target = $("#oTable");
+        var model = obj.config.model.selector ;
+        model = $(model) ;
+        var rows = target.bootstrapTable('getSelections');
+        var data = [] ;
+        $.each(rows,function (i,item) {
+            data.push(item.id) ;
+        });
+        if (rows.length == 0){
+            bootbox.alert("至少选择一个!");
+            return false;
+        }
+        bootbox.confirm({
+            size: "small",
+            message: "Are you sure?",
+            callback: function(result){
+                if (result){
+                    obj.deleteServer(data.join(","), function () {
+                        obj.init();
+                        model.modal("hide");
+                        bootbox.alert("删除成功!…");
+                    });
+                }
+            }
+        });
+    };
+
     obj.delete = function (id) {
-        console.log(id);
+        var model = obj.config.model.selector ;
+        model = $(model) ;
+        bootbox.confirm("Are you sure?", function(result){
+            if (result){
+                obj.deleteServer(id,function () {
+                    obj.init();
+                    bootbox.alert("删除成功!…");
+                    model.modal("hide");
+                }) ;
+            }
+        }) ;
+    };
+
+    obj.deleteServer = function (id,callback) {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/api/user/delete/"+id,
+            type: "post",
+            dataType: "json",
+            data: {"_method": "DELETE"},
+            success: function (result) {
+                if (result.ret) {
+                    if (callback){
+                        callback() ;
+                    }
+                }
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
     };
 
     obj.edit = function (id) {
-        console.log(id);
+        var target = $("#oTable");
+        var item = target.bootstrapTable('getRowByUniqueId', id);
+        obj.showModel(item) ;
+    };
+
+    obj.saveData = function () {
+        var model = obj.config.model.selector ;
+        model = $(model) ;
+        var frm = model.find("form");
+        if (!frm.valid()) {
+            return false;
+        }
+        var data = formSerializeArray(frm);
+        $.ajax({
+            url: "${pageContext.request.contextPath}/api/user/save",
+            type: "post",
+            dataType: "json",
+            data: {formData: JSON.stringify(data)},
+            success: function (result) {
+                if (result.ret) {
+                    obj.init();
+                    bootbox.alert("save成功!");
+                    model.modal("hide");
+                }
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
     };
 
     $(document).ready(function () {
@@ -122,54 +223,72 @@
 </script>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div id="modeUserDiv" class="modal fade bs-example-modal-lg" data-backdrop="static" tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">×
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    简单测试
-                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">restful ..</h3>
             </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="x-valid">
-                            <label class="control-label col-xs-1  col-sm-1  col-md-1  col-lg-1">
-                                年龄
-                            </label>
-                            <div class="col-xs-11  col-sm-11  col-md-11  col-lg-11">
-                                <input type="text" class="form-control" name="age" placeholder="年龄" required="required">
+            <form class="form-horizontal">
+                <input type="hidden" name="id">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class=" col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            名称<span class="symbol required"></span>
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control" name="userName"
+                                                   placeholder="名称" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            年龄<span class="symbol required"></span>
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control" name="age"
+                                                   placeholder="年龄" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            角色<span class="symbol required"></span>
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control" name="role"
+                                                   placeholder="角色" required="required">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="x-valid">
-                            <label class="control-label col-xs-1  col-sm-1  col-md-1  col-lg-1">
-                                用户名
-                            </label>
-                            <div class="col-xs-11  col-sm-11  col-md-11  col-lg-11">
-                                <input type="text" class="form-control" name="username" placeholder="用户名"
-                                       required="required">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
+                </div>
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">关闭
+                <button type="button" data-dismiss="modal" class="btn btn-default">
+                    取消
                 </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
+                <button type="button" class="btn btn-primary"
+                        onclick="obj.saveData(this);">
+                    保存
                 </button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

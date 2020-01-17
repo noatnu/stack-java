@@ -30,5 +30,12 @@
     from boot_user
   </select>
 
+  <select id="selectPageByQuery" parameterType="map" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from boot_user LIMIT #{offset},#{limit}
+  </select>
+
 
 </mapper>
