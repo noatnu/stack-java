@@ -1,9 +1,11 @@
 package com.blue.common.page;
 
+import java.io.Serializable;
+
 /**
  * 分页请求
  */
-public class PageRequest {
+public class PageRequest implements Serializable {
     /**
      * 当前页码
      */
@@ -16,6 +18,8 @@ public class PageRequest {
     private int limit;
 
     private int offset;
+
+
 
     public int getPageNumber() {
         return pageNumber;
@@ -44,6 +48,8 @@ public class PageRequest {
     public int getOffset() {
         return offset;
     }
+
+
 
     public void setOffset(int offset) {
         this.offset = offset;

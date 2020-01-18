@@ -1,13 +1,15 @@
-CREATE TABLE `boot_user` (
+CREATE TABLE `tb_user_boot` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `pid` int(12) DEFAULT NULL,
-  `user_name` varchar(255) DEFAULT NULL,
-  `authority` varchar(255) DEFAULT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  `age` int(30) DEFAULT NULL,
-  `create_date` date DEFAULT NULL,
+  `salt` varchar(255) DEFAULT NULL COMMENT '盐',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `authority` varchar(255) DEFAULT NULL COMMENT '权限',
+  `role` varchar(255) DEFAULT NULL COMMENT '角色',
+  `age` int(30) DEFAULT NULL COMMENT '年龄',
+  `create_date` date DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `tb_tree_node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

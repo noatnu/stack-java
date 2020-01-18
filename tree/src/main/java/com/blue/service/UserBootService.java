@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import tool.utils.FormatUtils;
 import tool.web.BootstrapTableVo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Author zch
@@ -29,8 +31,8 @@ public class UserBootService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Integer getAllSize(){
-        return jdbcTemplate.queryForObject("select count(1) from boot_user",Integer.TYPE) ;
+    private Integer getAllSize(){
+        return jdbcTemplate.queryForObject(String.join("","select count(1) from ", FormatUtils.entityNameConvertToTableName(UserBoot.class)),Integer.TYPE) ;
     }
 
     @Lazy
@@ -39,6 +41,7 @@ public class UserBootService {
 
     public void saveUserBoot(UserBoot userBoot) {
         userBoot.setCreateDate(new Date());
+        userBoot.setSalt(UUID.randomUUID().toString());
         userBootDao.saveUserBoot(userBoot);
     }
 
@@ -56,16 +59,6 @@ public class UserBootService {
 
     public List<UserBoot> findListUserBoot() {
         return userBootDao.findListUserBoot();
-    }
-
-    public BootstrapTableVo getBootstrapTableVo(PageRequest pageRequest) {
-        BootstrapTableVo vo = new BootstrapTableVo();
-        PageHelper.startPage(pageRequest.getOffset(), pageRequest.getLimit());
-        List<UserBoot> userBootList = customMapper.selectPage();
-        PageInfo<UserBoot> pageInfo = new PageInfo<UserBoot>(userBootList);
-        vo.setTotal(pageInfo.getTotal());
-        vo.setRows(userBootList);
-        return vo;
     }
 
     public BootstrapTableVo getBootstrapTableVoTo(PageRequest pageRequest) {

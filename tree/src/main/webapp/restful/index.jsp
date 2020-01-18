@@ -75,8 +75,12 @@
                 title: '用户名'
             },
             {
-                field: 'id',
-                title: '标识符'
+                field: 'password',
+                title: '密码'
+            },
+            {
+                field: 'authority',
+                title: '权限'
             },
             {
                 field: 'role',
@@ -254,6 +258,17 @@
                                 <div class="form-group">
                                     <div class="x-valid">
                                         <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            密码<span class="symbol required"></span>
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control" name="password"
+                                                   placeholder="密码" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
                                             年龄<span class="symbol required"></span>
                                         </label>
                                         <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
@@ -265,11 +280,22 @@
                                 <div class="form-group">
                                     <div class="x-valid">
                                         <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
-                                            角色<span class="symbol required"></span>
+                                            角色
                                         </label>
                                         <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
                                             <input type="text" class="form-control" name="role"
-                                                   placeholder="角色" required="required">
+                                                   placeholder="角色">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="x-valid">
+                                        <label class=" col-xs-2  col-sm-2  col-md-2  col-lg-2  control-label">
+                                            权限
+                                        </label>
+                                        <div class=" col-xs-10  col-sm-10  col-md-10  col-lg-10 ">
+                                            <input type="text" class="form-control" name="authority"
+                                                   placeholder="权限">
                                         </div>
                                     </div>
                                 </div>

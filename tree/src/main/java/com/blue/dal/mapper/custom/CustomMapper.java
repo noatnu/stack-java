@@ -9,12 +9,6 @@ import java.util.List;
 public interface CustomMapper {
 
     /**
-     * 分页查询用户
-     * @return
-     */
-    List<UserBoot> selectPage();
-
-    /**
      *
      * @param pageRequest
      * @return

@@ -1,11 +1,14 @@
 package com.test;
 
+import com.blue.common.CommonUtils;
+import com.blue.dal.entity.UserBoot;
 import com.blue.spring.SpringBootDemoApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
+import tool.utils.FormatUtils;
 
 /**
  * Created by zch on 2019-12-6.
@@ -23,6 +26,7 @@ public class LoggerTest extends AbstractTestNGSpringContextTests {
         logger.debug("debug");
         logger.error("error");
         logger.warn("warn");
+        System.out.println(FormatUtils.entityNameConvertToTableName(UserBoot.class));
     }
 
 }

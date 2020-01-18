@@ -33,7 +33,7 @@ public class UserBootDao {
     }
 
     public boolean updateUserBoot(UserBoot userBoot){
-        return userBootMapper.updateByPrimaryKeySelective(userBoot)==1;
+        return userBootMapper.updateByPrimaryKey(userBoot)==1;
     }
 
     public List<UserBoot> findListUserBoot(){
