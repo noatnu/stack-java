@@ -48,17 +48,17 @@
     }
 
     obj.initForm = function (data) {
-        var model = obj.config.model.selector ;
-        model = $(model) ;
+        var model = obj.config.model.selector;
+        model = $(model);
         var frm = model.find("form");
         frm.clearAll();
         frm.initForm(data);
     };
 
     obj.showModel = function (data) {
-        var model = obj.config.model.selector ;
-        model = $(model) ;
-        obj.initForm(data) ;
+        var model = obj.config.model.selector;
+        model = $(model);
+        obj.initForm(data);
         model.modal("show");
     };
 
@@ -77,6 +77,10 @@
             {
                 field: 'id',
                 title: '标识符'
+            },
+            {
+                field: 'role',
+                title: '角色'
             },
             {
                 field: 'id',
@@ -126,26 +130,23 @@
 
     obj.removeAll = function () {
         var target = $("#oTable");
-        var model = obj.config.model.selector ;
-        model = $(model) ;
         var rows = target.bootstrapTable('getSelections');
-        var data = [] ;
-        $.each(rows,function (i,item) {
-            data.push(item.id) ;
+        var data = [];
+        $.each(rows, function (i, item) {
+            data.push(item.id);
         });
-        if (rows.length == 0){
-            bootbox.alert("至少选择一个!");
+        if (rows.length == 0) {
+            toastr.warning("至少选择一个!");
             return false;
         }
         bootbox.confirm({
             size: "small",
             message: "Are you sure?",
-            callback: function(result){
-                if (result){
+            callback: function (result) {
+                if (result) {
                     obj.deleteServer(data.join(","), function () {
                         obj.init();
-                        model.modal("hide");
-                        bootbox.alert("删除成功!…");
+                        toastr.info("删除成功!…");
                     });
                 }
             }
@@ -153,29 +154,29 @@
     };
 
     obj.delete = function (id) {
-        var model = obj.config.model.selector ;
-        model = $(model) ;
-        bootbox.confirm("Are you sure?", function(result){
-            if (result){
-                obj.deleteServer(id,function () {
+        var model = obj.config.model.selector;
+        model = $(model);
+        bootbox.confirm("Are you sure?", function (result) {
+            if (result) {
+                obj.deleteServer(id, function () {
                     obj.init();
-                    bootbox.alert("删除成功!…");
+                    toastr.info("删除成功!…");
                     model.modal("hide");
-                }) ;
+                });
             }
-        }) ;
+        });
     };
 
-    obj.deleteServer = function (id,callback) {
+    obj.deleteServer = function (id, callback) {
         $.ajax({
-            url: "${pageContext.request.contextPath}/api/user/delete/"+id,
+            url: "${pageContext.request.contextPath}/api/user/delete/" + id,
             type: "post",
             dataType: "json",
             data: {"_method": "DELETE"},
             success: function (result) {
                 if (result.ret) {
-                    if (callback){
-                        callback() ;
+                    if (callback) {
+                        callback();
                     }
                 }
             },
@@ -188,12 +189,12 @@
     obj.edit = function (id) {
         var target = $("#oTable");
         var item = target.bootstrapTable('getRowByUniqueId', id);
-        obj.showModel(item) ;
+        obj.showModel(item);
     };
 
     obj.saveData = function () {
-        var model = obj.config.model.selector ;
-        model = $(model) ;
+        var model = obj.config.model.selector;
+        model = $(model);
         var frm = model.find("form");
         if (!frm.valid()) {
             return false;

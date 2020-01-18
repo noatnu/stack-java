@@ -56,3 +56,6 @@
 <script src="${pageContext.request.contextPath}/assembly/plugins/md5/jQuery.md5.js" type="text/javascript"></script>
 <!-- 弹出框 -->
 <script src="${pageContext.request.contextPath}/assembly/plugins/message/bootbox.js" type="text/javascript"></script>
+<!-- 消息弹出框 -->
+<link href="${pageContext.request.contextPath}/assembly/plugins/jquery/toastr/toastr.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/assembly/plugins/jquery/toastr/toastr.min.js" type="text/javascript"></script>
