@@ -61,4 +61,14 @@ public class TreeNodeController {
         }
     }
 
+    @GetMapping(value = "/treeviewData")
+    public HttpResult treeviewData(){
+        try {
+            return HttpResult.newCorrectResult(200,treeNodeService.getBootstrapTreeNodeList()) ;
+        } catch (Exception e) {
+            logger.error(e.getMessage(),e);
+            return HttpResult.newErrorResult(500,e) ;
+        }
+    }
+
 }

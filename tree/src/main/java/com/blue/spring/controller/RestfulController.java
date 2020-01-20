@@ -1,4 +1,4 @@
-package com.blue.spring.controller.other;
+package com.blue.spring.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.blue.common.page.PageRequest;

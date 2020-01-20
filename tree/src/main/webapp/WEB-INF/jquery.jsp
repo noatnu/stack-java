@@ -14,8 +14,10 @@
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/hello">hello</a></li>
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/jsonShowTree">json方式 展示 树</a></li>
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/getSelectTree">获取所选树</a></li>
-                <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/handleEvent">事件处理</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/handleEvent">bootstrap-treeview</a></li>
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/jquery/tree/appendNode">appendNode</a></li>
+
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/bootstrap/treeview">bootstrap tree</a></li>
             </ul>
 
             <ul style="margin-top:20px;margin-right:30px;">

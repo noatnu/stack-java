@@ -5,6 +5,7 @@ public enum ViewEnum {
     WEB("WEB-INF/","敏感目录"),
     EASY("easy/","easyUi树目录"),
     ZTREE("ztree/","ztree树目录"),
+    Bootstrap("bootstrap/","ztree树目录"),
     JQUERY("jquery/","jquery树目录"),
     DataGrid("dataGrid/","easyUi树目录"),
     TREE("tree/","easyUi树目录"),
