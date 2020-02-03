@@ -71,11 +71,11 @@
       <version>7.0.0.Beta1</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.activiti</groupId>
-      <artifactId>activiti-bpmn-layout</artifactId>
-      <version>7.0.0.Beta1</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.activiti</groupId>-->
+      <!--<artifactId>activiti-bpmn-layout</artifactId>-->
+      <!--<version>7.0.0.Beta1</version>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.activiti.cloud</groupId>
