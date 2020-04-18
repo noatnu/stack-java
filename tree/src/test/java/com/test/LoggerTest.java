@@ -22,6 +22,7 @@ public class LoggerTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testAll(){
+        System.out.println(Integer.parseInt("44.3636"));
         logger.info("info");
         logger.debug("debug");
         logger.error("error");
