@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.LikeTable;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.apache.commons.collections.CollectionUtils;
@@ -58,6 +59,7 @@ public class MysqlGenerator {
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
         gc.setFileOverride(true);
+        gc.setDateType(DateType.ONLY_DATE); // 设置日期类型为Date
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -137,25 +139,9 @@ public class MysqlGenerator {
      */
     public static void main(String[] args) {
         List<LikeTable> likeTableList = new ArrayList<>() ;
-//        likeTableList.add(new LikeTable("tb_ad_base_data_dic")) ;
-//        likeTableList.add(new LikeTable("tb_ad_base_township")) ;
-//        likeTableList.add(new LikeTable("tb_ad_hrs_house")) ;
-//        likeTableList.add(new LikeTable("tb_ad_project_agreement_placement_conclude")) ;
-//        likeTableList.add(new LikeTable("tb_ad_project_agreement_placement_conclude_detail")) ;
-//        likeTableList.add(new LikeTable("tb_ad_project_info")) ;
 
-
-//        likeTableList.add(new LikeTable("tb_ad_hrs_building")) ;
-//        likeTableList.add(new LikeTable("tb_ad_hrs_community")) ;
-//        likeTableList.add(new LikeTable("tb_ad_hrs_unit")) ;
-
-
-//        likeTableList.add(new LikeTable("tb_ad_supervisory_report_info")) ;
-
-//        likeTableList.add(new LikeTable("tb_ad_project_hhs_audit_cross_total")) ;
-//        likeTableList.add(new LikeTable("tb_ad_project_hhs_audit_member")) ;
-
-        likeTableList.add(new LikeTable("tb_uc_user")) ;
+//        likeTableList.add(new LikeTable("tb_uc_user")) ;
+        likeTableList.add(new LikeTable("tb_uc_gov_info")) ;
 
         init(likeTableList) ;
     }

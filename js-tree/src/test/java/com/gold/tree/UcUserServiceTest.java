@@ -22,7 +22,7 @@ public class UcUserServiceTest {
         obj.setName(RandomStringUtils.randomAlphabetic(9));
         obj.setUserPwd(RandomStringUtils.randomAlphabetic(9));
         obj.setMobile(RandomStringUtils.randomNumeric(9));
-        Long aLong = ucUserService.saveAndUpdate(obj);
+        Integer aLong = ucUserService.saveAndUpdate(obj);
         System.out.println("版本号:"+aLong);
     }
 
@@ -34,9 +34,9 @@ public class UcUserServiceTest {
         obj.setName(RandomStringUtils.randomAlphabetic(9));
         obj.setUserPwd(RandomStringUtils.randomAlphabetic(9));
         obj.setMobile(RandomStringUtils.randomNumeric(9));
-        obj.setVersion(Long.valueOf(67));
+        obj.setVersion(Integer.valueOf(67));
         obj.setId(Long.valueOf(7122682));
-        Long aLong = ucUserService.saveAndUpdate(obj);
+        Integer aLong = ucUserService.saveAndUpdate(obj);
         System.out.println("版本号:"+aLong);
     }
 

@@ -34,21 +34,21 @@ public class UcUserService {
         return vo;
     }
 
-    private Long saveUcUser(UcUser oo) {
+    private Integer saveUcUser(UcUser oo) {
         if (oo.getVersion() == null || oo.getVersion() == 0) {
-            oo.setVersion(RandomUtils.nextLong(1,100));
+            oo.setVersion(RandomUtils.nextInt(1,100));
         }
         iUcUserService.save(oo);
         return oo.getVersion() ;
     }
 
-    private Long updateById(UcUser obj) {
-        iUcUserService.updateById(obj) ;
+    private Integer updateById(UcUser obj) {
+        iUcUserService.updateById(obj);
         return iUcUserService.getById(obj.getId()).getVersion();
     }
 
 
-    public Long saveAndUpdate(UcUser obj) {
+    public Integer saveAndUpdate(UcUser obj) {
         if (obj.getId() == null || obj.getId() == 0) {
             return saveUcUser(obj) ;
         }else {

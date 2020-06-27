@@ -2,7 +2,7 @@ package com.gold.dal.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.io.Serializable;
 
 /**
@@ -40,7 +40,7 @@ public class UcUser implements Serializable {
      * 生日
      */
     @TableField("BIRTHDAY")
-    private LocalDateTime birthday;
+    private Date birthday;
 
     /**
      * 姓名
@@ -82,7 +82,7 @@ public class UcUser implements Serializable {
      * 最后登录时间
      */
     @TableField("LAST_LOGIN_DATE")
-    private LocalDateTime lastLoginDate;
+    private Date lastLoginDate;
 
     /**
      * 最后登录IP
@@ -136,13 +136,13 @@ public class UcUser implements Serializable {
      * 注册时间
      */
     @TableField("CREATE_DATE")
-    private LocalDateTime createDate;
+    private Date createDate;
 
     /**
      * 修改日期
      */
     @TableField("UPDATE_DATE")
-    private LocalDateTime updateDate;
+    private Date updateDate;
 
     /**
      * 密码强度
@@ -184,8 +184,7 @@ public class UcUser implements Serializable {
      * 用作乐观锁
      */
     @Version
-    @TableField("version")
-    private Long version;
+    private Integer version;
 
     public Long getId() {
         return id;
@@ -208,11 +207,11 @@ public class UcUser implements Serializable {
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
     }
-    public LocalDateTime getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
     public String getName() {
@@ -257,11 +256,11 @@ public class UcUser implements Serializable {
     public void setUserMall(Long userMall) {
         this.userMall = userMall;
     }
-    public LocalDateTime getLastLoginDate() {
+    public Date getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(LocalDateTime lastLoginDate) {
+    public void setLastLoginDate(Date lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
     public String getLastLoginIp() {
@@ -320,18 +319,18 @@ public class UcUser implements Serializable {
     public void setCreater(Long creater) {
         this.creater = creater;
     }
-    public LocalDateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    public LocalDateTime getUpdateDate() {
+    public Date getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(LocalDateTime updateDate) {
+    public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
     public String getPwdIntensity() {
@@ -376,11 +375,11 @@ public class UcUser implements Serializable {
     public void setActivateType(String activateType) {
         this.activateType = activateType;
     }
-    public Long getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

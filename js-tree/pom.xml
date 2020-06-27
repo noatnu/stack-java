@@ -54,11 +54,13 @@
         </dependency>
 
         <!-- alibaba的druid数据库连接池 -->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>druid-spring-boot-starter</artifactId>-->
-            <!--<version>1.1.0</version>-->
-        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.22</version>
+        </dependency>
+
 
         <!-- dbcp数据库连接池 -->
         <dependency>
@@ -68,11 +70,11 @@
         </dependency>
 
         <!-- druid数据库连接池 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.10</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+            <!--<version>1.1.10</version>-->
+        <!--</dependency>-->
 
 
 
@@ -91,8 +93,8 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <!--<version>3.3.0</version>-->
-            <!--<version>3.3.2</version>-->
-            <version>3.1.1</version>
+            <version>3.3.2</version>
+            <!--<version>3.1.1</version>-->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
@@ -176,6 +178,10 @@
             <version>3.3.0</version>
             <scope>provided</scope>
         </dependency>
+
+
+
+
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
