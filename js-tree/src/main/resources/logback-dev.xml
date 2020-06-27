@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 项目的appid -->
-    <property name="APP_ID" value="pmcc-land-ad"/>
+    <property name="APP_ID" value="js-tree"/>
     <property name="LOG_PATH" value="/data/logs"></property>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
