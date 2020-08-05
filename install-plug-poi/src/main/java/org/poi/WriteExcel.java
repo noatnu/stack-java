@@ -196,7 +196,7 @@ public class WriteExcel {
                     }
                     if (i == 8) {
                         cell.setCellType(Cell.CELL_TYPE_FORMULA);//设置单元格类型为公式
-                        cell.setCellFormula("SUM(C3,G3)");
+                        cell.setCellFormula("SUM(C3:G3)");
                     }
                 }
 
@@ -216,7 +216,7 @@ public class WriteExcel {
                     }
                     if (i == 8) {
                         cell.setCellType(Cell.CELL_TYPE_FORMULA);//设置单元格类型为公式
-                        cell.setCellFormula("MAX(C5,G5)");
+                        cell.setCellFormula("MAX(C5:G5)");
                     }
                 }
             }
@@ -602,6 +602,8 @@ public class WriteExcel {
     private void writeFile(Workbook workbook, String path) {
         try {
             File file = new File(path);
+//            file.mkdirs();
+//            file.mkdir();
             FileOutputStream fileoutputStream = new FileOutputStream(file);
             workbook.write(fileoutputStream);
             fileoutputStream.close();
