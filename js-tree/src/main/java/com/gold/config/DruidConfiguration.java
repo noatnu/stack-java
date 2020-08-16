@@ -27,6 +27,7 @@ public class DruidConfiguration {
         return new DruidDataSource();
     }
 
+    //http://localhost:8080/druid/login.html
     @Bean
     public ServletRegistrationBean druidStatViewServlet() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");

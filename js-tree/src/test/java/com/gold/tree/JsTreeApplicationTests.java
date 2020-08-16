@@ -21,7 +21,7 @@ class JsTreeApplicationTests {
 
 
     @Test
-     void testA() {
+     public void testA() {
         try {
             dataSource.getConnection().getClientInfo().stringPropertyNames().stream().forEach(s -> System.out.println("JsTreeApplicationTests.testA" +s));
         } catch (SQLException e) {
