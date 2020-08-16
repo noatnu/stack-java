@@ -74,9 +74,9 @@
 
         <!-- druid数据库连接池 -->
         <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>druid</artifactId>-->
-            <!--<version>1.1.10</version>-->
+        <!--<groupId>com.alibaba</groupId>-->
+        <!--<artifactId>druid</artifactId>-->
+        <!--<version>1.1.10</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -84,23 +84,21 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <exclusions>
                 <!--<exclusion>-->
-                    <!--<groupId>org.javassist</groupId>-->
-                    <!--<artifactId>javassist</artifactId>-->
+                <!--<groupId>org.javassist</groupId>-->
+                <!--<artifactId>javassist</artifactId>-->
                 <!--</exclusion>-->
                 <!--<exclusion>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                    <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
                 <!--</exclusion>-->
             </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
         <!--<dependency>-->
-            <!--<groupId>org.javassist</groupId>-->
-            <!--<artifactId>javassist</artifactId>-->
-            <!--<version>3.24.0-GA</version>-->
+        <!--<groupId>org.javassist</groupId>-->
+        <!--<artifactId>javassist</artifactId>-->
+        <!--<version>3.24.0-GA</version>-->
         <!--</dependency>-->
-
-
 
 
         <dependency>
@@ -205,8 +203,6 @@
         </dependency>
 
 
-
-
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -217,7 +213,6 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
-
 
 
         <dependency>
@@ -244,6 +239,40 @@
             <artifactId>ant</artifactId>
             <version>1.9.6</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-core</artifactId>
+            <version>0.7.3</version>
+        </dependency>
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-extension</artifactId>
+            <version>0.7.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>us.codecraft</groupId>
+                    <artifactId>webmagic-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+
+
+        <!--<dependency>-->
+            <!--&lt;!&ndash; jsoup HTML parser library @ http://jsoup.org/ &ndash;&gt;-->
+            <!--<groupId>org.jsoup</groupId>-->
+            <!--<artifactId>jsoup</artifactId>-->
+            <!--<version>1.10.3</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <build>
