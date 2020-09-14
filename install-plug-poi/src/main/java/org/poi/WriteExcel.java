@@ -1,15 +1,14 @@
 package org.poi;
 
+import org.DateUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.tools.ant.util.DateUtils;
 import org.enums.ExcelForXSSFEnum;
 import org.testng.annotations.Test;
-import tool.help.Zhou_StdRandom;
-import tool.help.Zhou_String;
-import tool.help.Zhou_Word;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -51,7 +50,7 @@ public class WriteExcel {
         Row row = null;
         Cell cell = null;
         CellStyle style = null;
-        sheet = workbook.createSheet(Zhou_String.toUpperCase(7));
+        sheet = workbook.createSheet(RandomStringUtils.random(7));
         style = workbook.createCellStyle();
         style.setAlignment(CellStyle.ALIGN_CENTER);//居中
         Font font = workbook.createFont();
@@ -74,7 +73,7 @@ public class WriteExcel {
             for (int i = 1; i < 20; i++) {
                 cell = row.createCell(i);
                 cell.setCellStyle(style);
-                cell.setCellValue(Zhou_StdRandom.uniform(10, 100.04d));
+                cell.setCellValue(RandomUtils.nextDouble(10, 100.04d));
             }
         }
         writeFile(workbook, String.format("%s%s%s", ExcelForXSSFEnum.A_Path.getPath(), UUID.randomUUID().toString().substring(1, 6), ".xlsx"));
@@ -93,7 +92,7 @@ public class WriteExcel {
         Row row = null;
         Cell cell = null;
         CellStyle style = null;
-        sheet = workbook.createSheet(Zhou_String.toLowerCase(5));
+        sheet = workbook.createSheet(RandomStringUtils.random(5));
         style = workbook.createCellStyle();
         style.setAlignment(CellStyle.ALIGN_CENTER);//居中
         FileOutputStream fileOut = null;
@@ -135,7 +134,7 @@ public class WriteExcel {
         Row row = null;
         Cell cell = null;
         CellStyle style = null;
-        sheet = workbook.createSheet(Zhou_String.toLowerCase(5));
+        sheet = workbook.createSheet(RandomStringUtils.random(5));
         style = workbook.createCellStyle();
         style.setAlignment(CellStyle.ALIGN_CENTER);//居中
         FileOutputStream fileOut = null;
@@ -170,7 +169,7 @@ public class WriteExcel {
         Row row = null;
         Cell cell = null;
         CellStyle style = null;
-        sheet = workbook.createSheet(Zhou_String.toLowerCase(5));
+        sheet = workbook.createSheet(RandomStringUtils.random(5));
         style = workbook.createCellStyle();
         style.setAlignment(CellStyle.ALIGN_CENTER);//居中
         //设置单元格的默认宽度
@@ -181,7 +180,7 @@ public class WriteExcel {
             for (int i = 2; i < 7; i++) {
                 cell = row.createCell(i);
                 cell.setCellStyle(style);
-                cell.setCellValue(Zhou_StdRandom.uniform(10, 100.04d));
+                cell.setCellValue(RandomUtils.nextDouble(10, 100.04d));
             }
         }
 
@@ -239,7 +238,7 @@ public class WriteExcel {
         Row row = null;
         Cell cell = null;
         CellStyle style = null;
-        sheet = workbook.createSheet(Zhou_String.toLowerCase(5));
+        sheet = workbook.createSheet(RandomStringUtils.random(5));
         style = workbook.createCellStyle();
         style.setAlignment(CellStyle.ALIGN_CENTER);//居中
         //设置单元格的默认宽度
@@ -249,11 +248,11 @@ public class WriteExcel {
             for (int i = 1; i < 7; i++) {
                 cell = row.createCell(i);
                 cell.setCellStyle(style);
-                cell.setCellValue(Zhou_Word.getChineseName());
+                cell.setCellValue(RandomStringUtils.random(6));
             }
         }
 
-        sheet = workbook.createSheet(Zhou_String.toLowerCase(5));
+        sheet = workbook.createSheet(RandomStringUtils.random(5));
         //设置单元格的默认宽度
         sheet.setDefaultColumnWidth(20);
         for (int j = 2; j < 5; j++) {
@@ -261,7 +260,7 @@ public class WriteExcel {
             for (int i = 1; i < 7; i++) {
                 cell = row.createCell(i);
                 cell.setCellStyle(style);
-                cell.setCellValue(Zhou_Word.getEnglishName());
+                cell.setCellValue(RandomStringUtils.random(7));
             }
         }
         writeFile(workbook, String.format("%s%s%s", ExcelForXSSFEnum.A_Path.getPath(), UUID.randomUUID().toString().substring(1, 6), ".xlsx"));
@@ -302,7 +301,7 @@ public class WriteExcel {
                     cell.setHyperlink(hyperlink);
                     cell.setCellStyle(style);
                 } else {
-                    cell.setCellValue(Zhou_Word.getChineseName());
+                    cell.setCellValue(RandomStringUtils.random(8));
                 }
             }
         }
@@ -494,7 +493,7 @@ public class WriteExcel {
             for (int j = startCol; j < 10; j++) {
                 cell = row.createCell(j);
                 if (j % 2 == 0) {
-                    cell.setCellValue(tool.utils.DateUtils.format(new Date()));
+                    cell.setCellValue(DateUtils.format(new Date()));
                 } else {
                     cell.setCellValue(UUID.randomUUID().toString());
                 }

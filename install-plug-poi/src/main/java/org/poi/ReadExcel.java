@@ -1,20 +1,20 @@
 package org.poi;
 
 import com.google.common.collect.Lists;
+import org.PoiUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.enums.ExcelForXSSFEnum;
 import org.po.HouseExample;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
 import org.testng.annotations.Test;
-import tool.log.LoggerFactoryGET;
-import tool.utils.cell.apache.PoiUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * @Author noatn
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @createDate 2018/9/24
  **/
 public class ReadExcel {
-    private Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+    private Logger logger = LoggerFactory.getLogger(getClass()) ;
 
     @Test
     public void readHouseExample() {

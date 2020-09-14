@@ -5,8 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.FileUtils;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

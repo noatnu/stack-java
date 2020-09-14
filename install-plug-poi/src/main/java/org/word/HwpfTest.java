@@ -1,10 +1,10 @@
 package org.word;
 
+import org.FileUtils;
 import org.apache.poi.hpsf.DocumentSummaryInformation;
 import org.apache.poi.hpsf.SummaryInformation;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

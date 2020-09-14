@@ -1,11 +1,11 @@
 package org.table;
 
+import org.FileUtils;
+import org.HwpfUtils;
+import org.PoiUtils;
 import org.apache.poi.hwpf.usermodel.Table;
 import org.apache.poi.hwpf.usermodel.TableRow;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
-import tool.utils.cell.apache.PoiUtils;
-import tool.utils.word.apache.HwpfUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,9 +24,9 @@ public class Demo1 {
         PoiUtils poiUtils = new PoiUtils();
 
         List<Table> tableList = HwpfUtils.getWordHwpfTable(path);
-        for (Table table:tableList){
+        for (Table table : tableList) {
             List<TableRow> tableRowList = HwpfUtils.getWordHwpfRow(table);
-            for (TableRow tableRow:tableRowList){
+            for (TableRow tableRow : tableRowList) {
 
             }
         }

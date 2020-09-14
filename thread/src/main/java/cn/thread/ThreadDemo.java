@@ -1,9 +1,9 @@
 package cn.thread;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-import tool.help.Zhou_String;
 
 public class ThreadDemo {
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -27,7 +27,7 @@ public class ThreadDemo {
                 logger.info("thread is start! " + currentThread().getName());//currentThread 可以返回代码段正在被谁调用的信息
             }
         }
-        new Dthread(Zhou_String.toMath(4)).start();
+        new Dthread(RandomStringUtils.randomNumeric(4)).start();
     }
 
     /**
@@ -80,7 +80,7 @@ public class ThreadDemo {
             for (int i = 0; i < 500000; i++) {
                 logger.info("i= " + (i + 1));
             }
-        }, "" + Zhou_String.toLowerCase(5));
+        }, "" + RandomStringUtils.random(5));
         thread.start();
         try {
             Thread.sleep(20);
@@ -106,7 +106,7 @@ public class ThreadDemo {
             for (int i = 0; i < 500000; i++) {
                 logger.info("i= " + (i + 1));
             }
-        }, "" + Zhou_String.toLowerCase(5));
+        }, "" + RandomStringUtils.random(5));
         try {
             thread.start();
             Thread.sleep(2000);
@@ -162,7 +162,7 @@ public class ThreadDemo {
                 logger.error("异常!");
             }
 
-        }, "" + Zhou_String.toLowerCase(5));
+        }, "" + RandomStringUtils.random(5));
         try {
             thread.start();
             Thread.sleep(2000);
@@ -196,7 +196,7 @@ public class ThreadDemo {
                 logger.error("异常!");
             }
 
-        }, "" + Zhou_String.toLowerCase(5));
+        }, "" + RandomStringUtils.random(5));
         thread.start();
         thread.interrupt();
         logger.info("end!");
@@ -298,7 +298,7 @@ public class ThreadDemo {
             }
         }
         try {
-            MyThread thread = new MyThread(Zhou_String.toLowerCase(5));
+            MyThread thread = new MyThread(RandomStringUtils.random(5));
             int NUM = 1000 * 4;
             thread.start();
             Thread.sleep(NUM);

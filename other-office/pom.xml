@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <poi.version>3.9</poi.version>
         <spring.version>4.3.20.RELEASE</spring.version>
-        <maven.address>E:\lib\maven</maven.address>
+        <maven.address>D:\lib\maven</maven.address>
         <pdfbox.version>2.0.14</pdfbox.version>
         <!--<maven.address>C:\lib</maven.address>-->
     </properties>

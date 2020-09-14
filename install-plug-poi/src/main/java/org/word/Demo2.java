@@ -1,13 +1,13 @@
 package org.word;
 
+import org.AsposeUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.Range;
+import org.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
-import tool.utils.word.aspose.AsposeUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
