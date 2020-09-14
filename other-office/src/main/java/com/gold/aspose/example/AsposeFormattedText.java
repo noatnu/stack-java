@@ -3,9 +3,9 @@ package com.gold.aspose.example;
 import com.aspose.words.*;
 import com.aspose.words.Font;
 import com.gold.aspose.AsposeDataHelp;
+import com.gold.aspose.AsposeUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tool.utils.word.aspose.AsposeUtils;
 
 import java.awt.*;
 

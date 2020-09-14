@@ -1,12 +1,11 @@
 package com.blue.service;
 
+import com.blue.common.BootstrapTableVo;
 import com.blue.entity.SimpleBean;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Service;
-import tool.help.Zhou_StdRandom;
-import tool.help.Zhou_String;
-import tool.help.Zhou_Word;
-import tool.web.BootstrapTableVo;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class BiologyBeanService {
         List<SimpleBean> simpleBeanList = Lists.newArrayList();
         for (int i = 0; i < 100; i++) {
             simpleBean = new SimpleBean();
-            simpleBean.setId(Zhou_StdRandom.uniform(10,10000)).setName(Zhou_Word.getChineseName()).setTitle(Zhou_String.toLowerCase(5));
+            simpleBean.setId(RandomUtils.nextInt(10,10000)).setName(RandomStringUtils.random(5)).setTitle(RandomStringUtils.random(5));
             simpleBeanList.add(simpleBean);
         }
         vo.setRows(simpleBeanList);

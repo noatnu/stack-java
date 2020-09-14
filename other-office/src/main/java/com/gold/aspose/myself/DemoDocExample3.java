@@ -2,11 +2,11 @@ package com.gold.aspose.myself;
 
 import com.aspose.words.*;
 import com.gold.aspose.AsposeDataHelp;
+import com.gold.aspose.AsposeUtils;
+import com.gold.aspose.FileUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.testng.annotations.BeforeTest;
-import tool.utils.FileUtils;
-import tool.utils.word.aspose.AsposeUtils;
 
 import java.io.File;
 import java.util.regex.Pattern;

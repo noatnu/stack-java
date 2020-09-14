@@ -3,12 +3,12 @@ package com.blue.service;
 import com.blue.dao.MessageDao;
 import com.blue.entity.BookExample;
 import com.blue.entity.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tool.log.LoggerFactoryGET;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * @Auther: zch
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 @Service
 public class MessageService {
-    private final Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 
     @Autowired
     private MessageDao messageDao;

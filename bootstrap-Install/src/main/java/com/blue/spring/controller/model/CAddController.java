@@ -1,12 +1,12 @@
 package com.blue.spring.controller.model;
 
 import com.blue.common.enums_common.Views;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import tool.log.LoggerFactoryGET;
 
-import java.util.logging.Logger;
 
 /**
  * @Author noatn
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @Controller
 public class CAddController {
 
-    private final Logger logger = LoggerFactoryGET.loggerALL;
+    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 
     @RequestMapping(value = "/helloWorld")
     public ModelAndView helloWorld(){

@@ -2,10 +2,10 @@ package com.gold.aspose.example;
 
 import com.aspose.words.*;
 import com.gold.aspose.AsposeDataHelp;
+import com.gold.aspose.AsposeUtils;
+import com.gold.aspose.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
-import tool.utils.word.aspose.AsposeUtils;
 
 import javax.imageio.ImageIO;
 import java.io.File;

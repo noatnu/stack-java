@@ -27,7 +27,6 @@
         <module>jquery-install</module>
         <module>map-study</module>
         <module>js-study</module>
-        <module>activity-study</module>
     </modules>
 
     <name>Java study</name>
@@ -39,40 +38,6 @@
 
 
     <dependencies>
-
-        <dependency>
-            <groupId>z-utils</groupId>
-            <artifactId>z-utils</artifactId>
-            <version>1.0</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>${project.basedir}/lib/z-utils.jar</systemPath>-->
-
-            <exclusions>
-
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.logback-extensions</groupId>
-                    <artifactId>logback-ext-spring</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
-
-        </dependency>
-
         <!-- 日志 -->
         <dependency>
             <groupId>ch.qos.logback</groupId>

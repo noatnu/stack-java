@@ -2,11 +2,11 @@ package com.gold.aspose.example;
 
 import com.aspose.words.*;
 import com.gold.aspose.AsposeDataHelp;
+import com.gold.aspose.AsposeUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.RandomStringUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tool.utils.word.aspose.AsposeUtils;
 
 import java.util.List;
 

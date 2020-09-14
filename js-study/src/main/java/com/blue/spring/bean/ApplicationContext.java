@@ -1,11 +1,11 @@
 package com.blue.spring.bean;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
-import tool.log.LoggerFactoryGET;
 
 import javax.servlet.ServletContext;
-import java.util.logging.Logger;
 
 /**
  * @Auther: zch
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 @Component
 public class ApplicationContext implements ServletContextAware {
-    private final Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
     @Override
     public void setServletContext(ServletContext servletContext) {
         String ctx = servletContext.getContextPath();

@@ -1,13 +1,12 @@
 package com.blue.spring.controller.example;
 
 import com.blue.enums.Views;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import tool.log.LoggerFactoryGET;
-
-import java.util.logging.Logger;
 
 /**
  * @Auther: zch
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
 @Controller
 public class CanvasController {
 
-    private final Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
 
     @RequestMapping(value = "/helloWorld", method = RequestMethod.GET,name = "canvas 第一个例子")
     public ModelAndView helloWorld() {

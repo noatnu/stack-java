@@ -4,10 +4,10 @@ import com.aspose.words.Document;
 import com.aspose.words.DocumentProperty;
 import com.aspose.words.FileFormatInfo;
 import com.aspose.words.FileFormatUtil;
+import com.gold.aspose.AsposeUtils;
+import com.gold.aspose.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
-import tool.utils.word.aspose.AsposeUtils;
 
 import java.text.MessageFormat;
 
