@@ -21,7 +21,6 @@
         <module>install-plug-htmlUnit</module>
         <module>install-plug-akka</module>
         <module>install-plug-testng</module>
-        <module>web-parent</module>
         <module>tree</module>
         <module>bootstrap-Install</module>
         <module>jquery-install</module>
