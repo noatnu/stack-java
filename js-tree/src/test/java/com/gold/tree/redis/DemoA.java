@@ -35,7 +35,7 @@ public class DemoA {
 
         stringRedisTemplate.opsForSet().add(UUID.randomUUID().toString(),RandomStringUtils.randomNumeric(25),RandomStringUtils.randomNumeric(25)) ;
 
-        stringRedisTemplate.opsForZSet().add(UUID.randomUUID().toString(),RandomStringUtils.randomNumeric(25),100) ;
+        stringRedisTemplate.opsForZSet().add(UUID.randomUUID().toString(),RandomStringUtils.randomNumeric(25),100) ;//分数相当于排序数值
 
         stringRedisTemplate.opsForList().leftPush((UUID.randomUUID().toString()),String.valueOf(RandomUtils.nextInt(33)));
     }
