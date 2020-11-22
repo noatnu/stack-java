@@ -1,8 +1,8 @@
 package other.jdk8.v1;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.RandomUtils;
 import org.testng.annotations.Test;
-import tool.help.Zhou_StdRandom;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +21,7 @@ public class StreamDemoA {
      */
     @Test
     public void createStream() {
-        List<Double> doubleList = Stream.generate(() -> Zhou_StdRandom.uniform(300d)).limit(30).collect(Collectors.toList());
+        List<Double> doubleList = Stream.generate(() -> RandomUtils.nextDouble(300d,10000)).limit(30).collect(Collectors.toList());
 
         Stream<Double> doubleStream = null;
         {

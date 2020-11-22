@@ -1,7 +1,6 @@
 package other.net;
 
 
-import tool.log.LogUtilA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class Demo1 {
     }
 
     public Thread client(int port) throws Exception {
-        Logger logger = LogUtilA.setLoggerHanlder(Level.ALL);
+        Logger logger = Logger.getAnonymousLogger();
         Thread thread = new Thread(() -> {
             Socket socket = null;
             BufferedReader reader = null;
@@ -53,7 +52,7 @@ public class Demo1 {
     }
 
     public Thread servlet(int port) throws Exception {
-        Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+        Logger loggerA = Logger.getAnonymousLogger();
         Thread thread = new Thread(() -> {
             ServerSocket servlet = null;
             Socket socket = null;

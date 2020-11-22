@@ -1,9 +1,8 @@
 package other.nio.channel;
 
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
-import tool.help.Zhou_String;
-import tool.log.LogUtilA;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UseChannel {
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
     String path = PathEnum.PATH_ENUM.getVar();
 
     @Test
@@ -54,7 +53,7 @@ public class UseChannel {
         loggerA.info(print(byteBuffer));
         byteBuffer.flip();
         loggerA.info(print(byteBuffer));
-        File file = new File(path + Zhou_String.toLowerCase(5) + ".html");
+        File file = new File(path + RandomStringUtils.randomNumeric(5) + ".html");
         try {
             FileOutputStream outputStream = new FileOutputStream(file);
             WritableByteChannel writableByteChannel = outputStream.getChannel();

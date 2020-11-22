@@ -2,7 +2,6 @@ package other.nio.channel;
 
 
 import org.junit.jupiter.api.Test;
-import tool.log.LogUtilA;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -15,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreateChannel {
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
     String path = PathEnum.PATH_ENUM.getVar();
 
     //通道的创建

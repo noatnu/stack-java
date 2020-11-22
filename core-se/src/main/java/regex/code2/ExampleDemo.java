@@ -1,8 +1,8 @@
 package regex.code2;
 
+import common.FileUtils;
 import org.apache.commons.lang.CharEncoding;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
 
 import java.io.File;
 import java.util.Arrays;

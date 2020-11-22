@@ -6,7 +6,6 @@ import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import other.jdk8.entity.Person;
 import other.jdk8.entity.Student;
-import tool.help.Zhou_StdRandom;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ExampleB {
     public void test() throws Exception {
         List<Integer> numS = Lists.newArrayList();
         for (int i = 0; i < 20; i++) {
-            numS.add(Zhou_StdRandom.uniform(1, 674));
+            numS.add(RandomUtils.nextInt(1, 674));
         }
 //        List<Integer> evens = new ArrayList<>();
 //        for (final Integer num : numS) {
@@ -125,7 +124,7 @@ public class ExampleB {
     public void testDistinct() throws Exception {
         List<Integer> numS = Lists.newArrayList();
         for (int i = 0; i < 1000; i++) {
-            numS.add(Zhou_StdRandom.uniform(1, 24));
+            numS.add(RandomUtils.nextInt(1, 24));
         }
         List<Integer> evens = numS.parallelStream().sorted().filter(integer -> integer % 2 == 0).distinct().collect(Collectors.toList());
         System.out.println(evens);

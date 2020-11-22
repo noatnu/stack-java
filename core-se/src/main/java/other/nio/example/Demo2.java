@@ -2,14 +2,13 @@ package other.nio.example;
 
 
 import org.junit.jupiter.api.Test;
-import tool.log.LogUtilA;
 
 import java.nio.ByteBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Demo2 {
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     @Test
     public void compact() {

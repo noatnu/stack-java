@@ -2,12 +2,12 @@ package other.jdk8.example.stram;
 
 import com.google.common.collect.*;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import other.jdk8.entity.Student;
-import tool.help.Zhou_StdRandom;
-import tool.help.Zhou_String;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -106,7 +106,7 @@ public class ExampleA {
      */
     @Test
     public void closeStream(){
-        Stream<String> stringStream = Stream.generate(() -> Zhou_String.toWord(4)).limit(20);
+        Stream<String> stringStream = Stream.generate(() -> RandomStringUtils.random(4)).limit(20);
         if (true){
             stringStream.close();
         }
@@ -126,7 +126,7 @@ public class ExampleA {
         Multimap<String, Double> multimap = ArrayListMultimap.create();
 
         for (int i = 0; i < 10; i++) {
-            multimap.put(String.valueOf(Zhou_StdRandom.uniform(1, 20)), Zhou_StdRandom.uniform(0.01d, 100d));
+            multimap.put(String.valueOf(RandomUtils.nextInt(1, 20)), RandomUtils.nextDouble(0.01d, 100d));
         }
 
         multimap.entries().stream().forEach(stringDoubleEntry -> {

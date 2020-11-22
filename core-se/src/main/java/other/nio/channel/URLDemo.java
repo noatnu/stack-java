@@ -1,7 +1,6 @@
 package other.nio.channel;
 
 
-import tool.log.LogUtilA;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -14,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class URLDemo {
     private static URLDemo urlDemo = new URLDemo();
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     private URLDemo() {
     }

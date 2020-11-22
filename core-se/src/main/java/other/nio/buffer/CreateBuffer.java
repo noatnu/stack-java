@@ -2,7 +2,6 @@ package other.nio.buffer;
 
 
 import org.junit.jupiter.api.Test;
-import tool.log.LogUtilA;
 
 import java.nio.Buffer;
 import java.nio.CharBuffer;
@@ -10,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreateBuffer {
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     @Test
     public void createOneA() {

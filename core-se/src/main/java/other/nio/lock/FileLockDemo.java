@@ -1,10 +1,9 @@
 package other.nio.lock;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import other.nio.channel.PathEnum;
 import other.nio.channel.URLDemo;
-import tool.help.Zhou_String;
-import tool.log.LogUtilA;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileLockDemo {
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     @Test
     public void runTest() {
@@ -58,7 +57,7 @@ public class FileLockDemo {
         String path = PathEnum.PATH_ENUM.getVar();
         Thread thread = new Thread(() -> {
             try {
-                File file = new File(path + Zhou_String.toLowerCase(5) + ".html");
+                File file = new File(path + RandomStringUtils.randomNumeric(5) + ".html");
                 FileOutputStream outputStream = new FileOutputStream(file);
                 FileChannel fileChannel = outputStream.getChannel();
                 FileLock fileLock = fileChannel.lock();//独占锁

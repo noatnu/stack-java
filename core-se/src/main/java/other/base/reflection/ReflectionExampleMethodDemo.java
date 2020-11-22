@@ -1,7 +1,7 @@
 package other.base.reflection;
 
-import org.springframework.util.ObjectUtils;
-import tool.log.LoggerFactoryGET;
+
+import org.apache.commons.lang.ArrayUtils;
 
 import java.lang.reflect.Method;
 import java.util.logging.Logger;
@@ -12,10 +12,10 @@ import java.util.logging.Logger;
  * @Description:反射方法
  */
 public class ReflectionExampleMethodDemo {
-    private final Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+    private final Logger logger = Logger.getAnonymousLogger();;
 
     public static void main(String[] args) {
-        final Logger logger = LoggerFactoryGET.getLoggerFactory().getLoggerAll();
+        final Logger logger = Logger.getAnonymousLogger();;
         try {
             Class<?> cClass = Class.forName("other.base.reflection.ReflectionExampleMethodDemo");
             logger.info(String.format("class name: %s", cClass.getSimpleName()));
@@ -23,7 +23,7 @@ public class ReflectionExampleMethodDemo {
             Method[] methods = null;
             /*获取所有的public修饰的方法 包括父类的方法*/
             methods = cClass.getMethods();
-            if (ObjectUtils.isArray(methods)) {
+            if (!ArrayUtils.isEmpty(methods)) {
                 for (Method method : methods) {
 //                    logger.info(String.format("method name: %s",method.getName()));
                 }
@@ -31,7 +31,7 @@ public class ReflectionExampleMethodDemo {
 
             /*获取class对象的所有声明方法:建议平时尽量使用getDeclaredMethods()*/
             methods = cClass.getDeclaredMethods();
-            if (ObjectUtils.isArray(methods)) {
+            if (!ArrayUtils.isEmpty(methods)) {
                 for (Method method : methods) {
                     logger.info(String.format("DeclaredMethod name: %s", method.getName()));
                 }

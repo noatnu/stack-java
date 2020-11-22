@@ -1,9 +1,9 @@
 package regex.code1;
 
 import com.google.common.collect.Lists;
+import common.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
-import tool.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;

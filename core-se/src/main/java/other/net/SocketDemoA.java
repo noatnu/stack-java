@@ -1,7 +1,6 @@
 package other.net;
 
 
-import tool.log.LogUtilA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,12 +8,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SocketDemoA {
 
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     public static void main(String[] args) {
         new SocketDemoA().oneServer();

@@ -2,12 +2,12 @@ package other.jdk8.example.stram;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.testng.collections.Maps;
 import other.jdk8.entity.Student;
-import tool.help.Zhou_StdRandom;
-import tool.help.Zhou_Word;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -210,7 +210,7 @@ public class ExampleC {
         Stream<String> stringStream = Stream.generate(new Supplier<String>() {
             @Override
             public String get() {
-                return Zhou_Word.getEnglishName();
+                return RandomStringUtils.random(5);
             }
         }).limit(12);
         List<String> stringList = Lists.newArrayList(stringStream.collect(Collectors.toList()));
@@ -227,7 +227,7 @@ public class ExampleC {
      */
     @org.testng.annotations.Test
     public void sortedTest(){
-        Stream<Integer> integerStream = Stream.iterate(2,(seed) -> Zhou_StdRandom.uniform(10,100)+seed).limit(50);
+        Stream<Integer> integerStream = Stream.iterate(2,(seed) -> RandomUtils.nextInt(10,100)+seed).limit(50);
         //这里需要注意的是创建的是Integer流,因为Integer已经实现了Comparable接口里面有compareTo方法
         integerStream.sorted().forEachOrdered(System.out::println);
         //假如没有实现Comparable接口那么就需要手动实现了
@@ -250,7 +250,7 @@ public class ExampleC {
         Stream<Integer> stringStream = Stream.iterate(2, new UnaryOperator<Integer>() {
             @Override
             public Integer apply(Integer integer) {
-                return integer* Zhou_StdRandom.uniform(Zhou_StdRandom.uniform(10,20))+2;
+                return integer* RandomUtils.nextInt(RandomUtils.nextInt(10, 20) ,RandomUtils.nextInt(10, 20))+2;
             }
         }).limit(20);
 //        stringStream.forEach(integer -> System.out.println(integer));

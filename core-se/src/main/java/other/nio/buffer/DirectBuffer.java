@@ -2,7 +2,6 @@ package other.nio.buffer;
 
 
 import org.junit.jupiter.api.Test;
-import tool.log.LogUtilA;
 
 import java.nio.ByteBuffer;
 import java.util.logging.Level;
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
 
 public class DirectBuffer {
 
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     /*直接缓冲区被用于与通道和固有 I/O 例程交
 互。它们通过使用固有代码来告知操作系统直接释放或填充内存区域，对用于通道直接或原始

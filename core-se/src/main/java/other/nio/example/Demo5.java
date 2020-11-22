@@ -2,7 +2,6 @@ package other.nio.example;
 
 
 import org.junit.jupiter.api.Test;
-import tool.log.LogUtilA;
 
 import java.nio.ByteBuffer;
 import java.util.logging.Level;
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Demo5 {//批量移动
 
-    private final Logger loggerA = LogUtilA.setLoggerHanlder(Level.ALL);
+    private final Logger loggerA = Logger.getAnonymousLogger();
 
     @Test
     public void morePutMove() {//批量填充
