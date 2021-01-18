@@ -10,7 +10,25 @@
     <packaging>maven-plugin</packaging>
     <name>install-plug-htmlUnit Maven Mojo</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <poi.version>3.9</poi.version>
+        <spring.version>4.3.20.RELEASE</spring.version>
+        <maven.address>D:\lib\maven</maven.address>
+        <pdfbox.version>2.0.14</pdfbox.version>
+    </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>z-utils</groupId>
+            <artifactId>z-utils</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
