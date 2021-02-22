@@ -99,12 +99,9 @@
         </dependency>
 
         <dependency>
-            <groupId>aspose-words</groupId>
+            <groupId>com.aspose</groupId>
             <artifactId>aspose-words</artifactId>
-            <scope>system</scope>
-            <version>18.10</version>
-            <!--<systemPath>${maven.address}/aspose-words/aspose-words-15.8.0-jdk16.jar</systemPath>-->
-            <systemPath>${maven.address}/aspose-words/aspose-words-18.10-jdk16.jar</systemPath>
+            <version>16.4.0</version>
         </dependency>
 
         <dependency>
@@ -124,5 +121,18 @@
             <version>2.1.0</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <name>e-iceblue</name>
+            <url>http://repo.e-iceblue.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>AsposeJavaAPI</id>
+            <name>Aspose Java API</name>
+            <url>https://repository.aspose.com/repo/</url>
+        </repository>
+    </repositories>
 
 </project>

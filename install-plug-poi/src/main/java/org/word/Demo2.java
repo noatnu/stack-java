@@ -52,7 +52,11 @@ public class Demo2 {
             com.aspose.words.DocumentBuilder builder = new com.aspose.words.DocumentBuilder(doc);
             builder.insertParagraph();
             map.forEach((key, value) -> {
-                builder.writeln(key);
+                try {
+                    builder.writeln(key);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
             doc.save(path, com.aspose.words.SaveFormat.DOC) ;
         }

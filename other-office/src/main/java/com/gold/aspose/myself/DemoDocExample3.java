@@ -28,7 +28,7 @@ public class DemoDocExample3 {
         documentBuilder.write(key);
         documentBuilder.insertBreak(BreakType.PAGE_BREAK);
         String replacePath = getDocument();
-        FindReplaceOptions findReplaceOptions = new FindReplaceOptions(new IReplacingCallback() {
+        doc.getRange().replace(Pattern.compile(key),new IReplacingCallback() {
             @Override
             public int replacing(ReplacingArgs e) throws Exception {
                 DocumentBuilder builder = new DocumentBuilder((Document)e.getMatchNode().getDocument());
@@ -37,8 +37,7 @@ public class DemoDocExample3 {
                 builder.insertDocument(document, 0);
                 return 0;
             }
-        }) ;
-        doc.getRange().replace(Pattern.compile(key),key,findReplaceOptions) ;
+        },false) ;
         doc.save(AsposeDataHelp.getPath(), SaveFormat.DOCX);
     }
 
